@@ -29,8 +29,8 @@
 *   notice, this list of conditions and the following disclaimer in the
 *   documentation and/or other materials provided with the distribution.
 *
-*   Neither the name of the copyright holder nor the names of the 
-*   contributors may be used to endorse or promote products derived from 
+*   Neither the name of the copyright holder nor the names of the
+*   contributors may be used to endorse or promote products derived from
 *   this software without specific prior written permission.
 *
 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
@@ -43,13 +43,13 @@
 * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
-* 
+*
 * The information provided is believed to be accurate and reliable.
 * The copyright holder assumes no responsibility for the consequences of use
 * of such information nor for any infringement of patents or
 * other rights of third parties which may result from its use.
 * No license is granted by implication or otherwise under any patent or
-* patent rights of the copyright holder. 
+* patent rights of the copyright holder.
 */
 #include "NAxisMotion.h"
 //Function Definitions
@@ -69,11 +69,11 @@ NAxisMotion::NAxisMotion()
 *Return Parameter: None
 *******************************************************************************************/
 void NAxisMotion::initSensor(unsigned int address)
-{	
+{
 	//Initialize the GPIO peripheral
 	pinMode(INT_PIN, INPUT_PULLUP);		//Configure Interrupt pin
 	pinMode(RESET_PIN, OUTPUT);			//Configure Reset pin
-	
+
 	//Power on the BNO055
 	resetSensor(address);
 }
@@ -95,23 +95,23 @@ void NAxisMotion::resetSensor(unsigned int address)
 	myBNO.bus_read = BNO055_I2C_bus_read;
 	myBNO.bus_write = BNO055_I2C_bus_write;
 	myBNO.delay_msec = _delay;
-	
+
 	//Set the I2C address here !!! ADDR1 is the default address
 	//myBNO.dev_addr = BNO055_I2C_ADDR1;
-	myBNO.dev_addr = address; 
+	myBNO.dev_addr = address;
 	//myBNO.dev_addr = BNO055_I2C_ADDR2;
-	
+
 	//Initialize the BNO055 structure to hold the device information
 	bno055_init(&myBNO);
-	
+
 	//Post initialization delay
 	delay(POST_INIT_PERIOD);
-	
+
 	//To set the output data format to the Android style
 	bno055_set_data_output_format(ANDROID);
-	
+
 	//Set the default data update mode to auto
-	dataUpdateMode = AUTO;	
+	dataUpdateMode = AUTO;
 }
 
 /*******************************************************************************************
@@ -121,7 +121,7 @@ void NAxisMotion::resetSensor(unsigned int address)
 *				---------------------------------------------------
 *				Constant Definition			Constant Value	Comment
 *				---------------------------------------------------
-*				OPERATION_MODE_CONFIG		0x00			Configuration Mode 
+*				OPERATION_MODE_CONFIG		0x00			Configuration Mode
 *																(Transient Mode)
 *				OPERATION_MODE_ACCONLY		0x01			Accelerometer only
 *				OPERATION_MODE_MAGONLY		0x02			Magnetometer only
@@ -129,17 +129,17 @@ void NAxisMotion::resetSensor(unsigned int address)
 *				OPERATION_MODE_ACCMAG		0x04			Accelerometer and Magnetometer only
 *				OPERATION_MODE_ACCGYRO		0x05			Accelerometer and Gyroscope only
 *				OPERATION_MODE_MAGGYRO		0x06			Magnetometer and Gyroscope only
-*				OPERATION_MODE_AMG			0x07			Accelerometer, Magnetometer and 
+*				OPERATION_MODE_AMG			0x07			Accelerometer, Magnetometer and
 *																Gyroscope (without fusion)
-*				OPERATION_MODE_IMUPLUS		0x08			Inertial Measurement Unit 
-*																(Accelerometer and Gyroscope 
+*				OPERATION_MODE_IMUPLUS		0x08			Inertial Measurement Unit
+*																(Accelerometer and Gyroscope
 *																	Sensor Fusion Mode)
-*				OPERATION_MODE_COMPASS		0x09			Tilt Compensated Compass 
-*																(Accelerometer and Magnetometer 
+*				OPERATION_MODE_COMPASS		0x09			Tilt Compensated Compass
+*																(Accelerometer and Magnetometer
 *																	Sensor Fusion Mode)
-*				OPERATION_MODE_M4G			0x0A			Magnetometer and Gyroscope Sensor 
+*				OPERATION_MODE_M4G			0x0A			Magnetometer and Gyroscope Sensor
 *																Fusion Mode
-*				OPERATION_MODE_NDOF_FMC_OFF	0x0B			9 Degrees of Freedom Sensor Fusion 
+*				OPERATION_MODE_NDOF_FMC_OFF	0x0B			9 Degrees of Freedom Sensor Fusion
 *																with Fast Magnetometer Calibration Off
 *				OPERATION_MODE_NDOF			0x0C			9 Degrees of Freedom Sensor Fusion
 *Return Parameter: None
@@ -147,7 +147,7 @@ void NAxisMotion::resetSensor(unsigned int address)
 void NAxisMotion::setOperationMode(byte operationMode)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
-	comRes = bno055_set_operation_mode(operationMode);			//Set the Operation Mode	
+	comRes = bno055_set_operation_mode(operationMode);			//Set the Operation Mode
 }
 
 /*******************************************************************************************
@@ -165,14 +165,14 @@ void NAxisMotion::setOperationMode(byte operationMode)
 void NAxisMotion::setPowerMode(byte powerMode)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
-	comRes = bno055_set_power_mode(powerMode);					//Set the Power Mode	
+	comRes = bno055_set_power_mode(powerMode);					//Set the Power Mode
 }
 
 /*******************************************************************************************
 *Description: This function is used to update the accelerometer data in m/s2
 *Input Parameters: None
 *Return Parameter: None
-*******************************************************************************************/	
+*******************************************************************************************/
 void NAxisMotion::updateAccel(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
@@ -183,7 +183,7 @@ void NAxisMotion::updateAccel(void)
 *Description: This function is used to update the magnetometer data in microTesla
 *Input Parameters: None
 *Return Parameter: None
-*******************************************************************************************/	
+*******************************************************************************************/
 void NAxisMotion::updateMag(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
@@ -194,18 +194,18 @@ void NAxisMotion::updateMag(void)
 *Description: This function is used to update the gyroscope data in deg/s
 *Input Parameters: None
 *Return Parameter: None
-*******************************************************************************************/	
+*******************************************************************************************/
 void NAxisMotion::updateGyro(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
-	comRes = bno055_convert_float_gyro_xyz_dps(&gyroData);		//Read the data from the sensor	
+	comRes = bno055_convert_float_gyro_xyz_dps(&gyroData);		//Read the data from the sensor
 }
-	
+
 /*******************************************************************************************
 *Description: This function is used to update the quaternion data
 *Input Parameters: None
 *Return Parameter: None
-*******************************************************************************************/	
+*******************************************************************************************/
 void NAxisMotion::updateQuat(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
@@ -216,7 +216,7 @@ void NAxisMotion::updateQuat(void)
 *Description: This function is used to update the euler data in degrees
 *Input Parameters: None
 *Return Parameter: None
-*******************************************************************************************/	
+*******************************************************************************************/
 void NAxisMotion::updateEuler(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
@@ -228,7 +228,7 @@ void NAxisMotion::updateEuler(void)
 *Description: This function is used to update the linear acceleration data in m/s2
 *Input Parameters: None
 *Return Parameter: None
-*******************************************************************************************/	
+*******************************************************************************************/
 void NAxisMotion::updateLinearAccel(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
@@ -239,7 +239,7 @@ void NAxisMotion::updateLinearAccel(void)
 *Description: This function is used to update the gravity acceleration data in m/s2
 *Input Parameters: None
 *Return Parameter: None
-*******************************************************************************************/	
+*******************************************************************************************/
 void NAxisMotion::updateGravAccel(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
@@ -294,7 +294,7 @@ void NAxisMotion::updateCalibStatus(void)
 *			ACCEL_LOWPOWER_2		0X04
 *			ACCEL_DEEPSUSPEND		0X05
 *Return Parameter: None
-*******************************************************************************************/	
+*******************************************************************************************/
 void NAxisMotion::writeAccelConfig(uint8_t range, uint8_t bandwidth, uint8_t powerMode)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
@@ -360,13 +360,13 @@ void NAxisMotion::resetInterrupt(void)
 }
 
 /*******************************************************************************************
-*Description: This function is used to enable the any motion interrupt based on the 
+*Description: This function is used to enable the any motion interrupt based on the
 *				accelerometer
 *Input Parameters:
 *	uint8_t threshold: The threshold that triggers the any motion interrupt
 *				The threshold should be entered as an integer. The corresponding value of
-*					the threshold depends on the range that has been set on the 
-*					accelerometer. Below is a table showing the value of 1LSB in 
+*					the threshold depends on the range that has been set on the
+*					accelerometer. Below is a table showing the value of 1LSB in
 *					corresponding units.
 *				Resolution:
 *					ACCEL_RANGE_2G, 1LSB = 3.91mg = ~0.03835m/s2
@@ -379,11 +379,11 @@ void NAxisMotion::resetInterrupt(void)
 *					ACCEL_RANGE_8G, 1LSB = 3.98g = ~39.0438m/s2
 *					ACCEL_RANGE_16G, 1LSB = 7.97g = ~97.1857m/s2
 *	uint8_t duration: The duration for which the desired threshold exist
-*				The time difference between the successive acceleration signals depends 
-*				on the selected bandwidth and equates to 1/(2*bandwidth). 
-*				In order to suppress false triggers, the interrupt is only generated (cleared) 
-*				if a certain number N of consecutive slope data points is larger (smaller) 
-*				than the slope 'threshold'. This number is set by the 'duration'. 
+*				The time difference between the successive acceleration signals depends
+*				on the selected bandwidth and equates to 1/(2*bandwidth).
+*				In order to suppress false triggers, the interrupt is only generated (cleared)
+*				if a certain number N of consecutive slope data points is larger (smaller)
+*				than the slope 'threshold'. This number is set by the 'duration'.
 *				It is N = duration + 1.
 *				Resolution:
 *					ACCEL_BW_7_81HZ, 1LSB = 64ms
@@ -418,13 +418,13 @@ void NAxisMotion::disableAnyMotion(void)
 }
 
 /*******************************************************************************************
-*Description: This function is used to enable the slow or no motion interrupt based on the 
+*Description: This function is used to enable the slow or no motion interrupt based on the
 *				accelerometer
 *Input Parameters:
 *	uint8_t threshold: The threshold that triggers the no motion interrupt
 *				The threshold should be entered as an integer. The corresponding value of
-*					the threshold depends on the range that has been set on the 
-*					accelerometer. Below is a table showing the value of 1LSB in 
+*					the threshold depends on the range that has been set on the
+*					accelerometer. Below is a table showing the value of 1LSB in
 *					corresponding units.
 *				Resolution:
 *					ACCEL_RANGE_2G, 1LSB = 3.91mg = ~0.03835m/s2
@@ -437,11 +437,11 @@ void NAxisMotion::disableAnyMotion(void)
 *					ACCEL_RANGE_8G, 1LSB = 3.98g = ~39.0438m/s2
 *					ACCEL_RANGE_16G, 1LSB = 7.97g = ~97.1857m/s2
 *	uint8_t duration: The duration for which the desired threshold should be surpassed
-*				The time difference between the successive acceleration signals depends 
-*				on the selected bandwidth and equates to 1/(2*bandwidth). 
-*				In order to suppress false triggers, the interrupt is only generated (cleared) 
-*				if a certain number N of consecutive slope data points is larger (smaller) 
-*				than the slope 'threshold'. This number is set by the 'duration'. 
+*				The time difference between the successive acceleration signals depends
+*				on the selected bandwidth and equates to 1/(2*bandwidth).
+*				In order to suppress false triggers, the interrupt is only generated (cleared)
+*				if a certain number N of consecutive slope data points is larger (smaller)
+*				than the slope 'threshold'. This number is set by the 'duration'.
 *				It is N = duration + 1.
 *				Resolution:
 *					ACCEL_BW_7_81HZ, 1LSB = 64ms
@@ -469,7 +469,7 @@ void NAxisMotion::enableSlowNoMotion(uint8_t threshold, uint8_t duration, bool m
 	comRes = bno055_set_intr_accel_no_motion(ENABLE);
 	comRes = bno055_set_intr_mask_accel_no_motion(ENABLE);
 }
-	
+
 /*******************************************************************************************
 *Description: This function is used to disable the slow or no motion interrupt
 *Input Parameters: None
@@ -586,7 +586,7 @@ float NAxisMotion::readGyroZ(void)
 *Description: This function is used to return the x-axis of the magnetometer data
 *Input Parameters: None
 *Return Parameter:
-*	float:	X-axis magnetometer data in µT
+*	float:	X-axis magnetometer data in ï¿½T
 *******************************************************************************************/
 float NAxisMotion::readMagX(void)
 {
@@ -601,7 +601,7 @@ float NAxisMotion::readMagX(void)
 *Description: This function is used to return the y-axis of the magnetometer data
 *Input Parameters: None
 *Return Parameter:
-*	float:	Y-axis magnetometer data in µT
+*	float:	Y-axis magnetometer data in ï¿½T
 *******************************************************************************************/
 float NAxisMotion::readMagY(void)
 {
@@ -616,7 +616,7 @@ float NAxisMotion::readMagY(void)
 *Description: This function is used to return the z-axis of the magnetometer data
 *Input Parameters: None
 *Return Parameter:
-*	float:	Z-axis magnetometer data in µT
+*	float:	Z-axis magnetometer data in ï¿½T
 *******************************************************************************************/
 float NAxisMotion::readMagZ(void)
 {
@@ -691,7 +691,7 @@ int16_t NAxisMotion::readQuatZ(void)
 *Description: This function is used to return the heading(yaw) of the euler data
 *Input Parameters: None
 *Return Parameter:
-*	float:	Heading of the euler data 
+*	float:	Heading of the euler data
 *******************************************************************************************/
 float NAxisMotion::readEulerHeading(void)
 {
@@ -706,7 +706,7 @@ float NAxisMotion::readEulerHeading(void)
 *Description: This function is used to return the roll of the euler data
 *Input Parameters: None
 *Return Parameter:
-*	float:	Roll of the euler data 
+*	float:	Roll of the euler data
 *******************************************************************************************/
 float NAxisMotion::readEulerRoll(void)
 {
@@ -721,7 +721,7 @@ float NAxisMotion::readEulerRoll(void)
 *Description: This function is used to return the pitch of the euler data
 *Input Parameters: None
 *Return Parameter:
-*	float:	Pitch of the euler data 
+*	float:	Pitch of the euler data
 *******************************************************************************************/
 float NAxisMotion::readEulerPitch(void)
 {
@@ -997,4 +997,230 @@ signed char BNO055_I2C_bus_write(unsigned char dev_addr,unsigned char reg_addr, 
 void _delay(u_32 period)
 {
 	delay(period);
+}
+
+
+void NAxisMotion::begin(unsigned int address = 0x28)
+{
+	initSensor(address);
+}
+
+void NAxisMotion::end()
+{
+
+}
+
+//accelerometer
+void NAxisMotion::readAccelerometer(float& x, float& y, float& z)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateAccel();
+	}
+	x = accelData.x;
+	y = accelData.y;
+	z = accelData.z;
+}
+
+float NAxisMotion::readAccelerometer(int axis)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateAccel();
+	}
+	if (axis == X_AXIS) {
+			return accelData.x;
+	} else if (axis == Y_AXIS) {
+			return accelData.y;
+	} else if (axis == Z_AXIS) {
+			return accelData.z;
+	}
+}
+
+void NAxisMotion::readAccel(float& x, float& y, float& z)
+{
+	readAccelerometer(x, y, z);
+}
+
+float NAxisMotion::readAccel(int axis)
+{
+	return readAccelerometer(axis);
+}
+
+// Grav. Acceleration
+void NAxisMotion::readGravAcceleration(float& x, float& y, float& z)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateGravAccel();
+	}
+	x = gravAccelData.x;
+	y = gravAccelData.y;
+	z = gravAccelData.z;
+}
+
+float NAxisMotion::readGravAcceleration(int axis)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateAccel();
+	}
+	if (axis == X_AXIS) {
+			return gravAccelData.x;
+	} else if (axis == Y_AXIS) {
+			return gravAccelData.y;
+	} else if (axis == Z_AXIS) {
+			return gravAccelData.z;
+	}
+}
+
+void NAxisMotion::readGravAccel(float& x, float& y, float& z)
+{
+	readGravAcceleration(x, y, z);
+}
+
+float NAxisMotion::readGravAccel(int axis)
+{
+	return readGravAcceleration(axis);
+}
+
+//Linear Acceleration
+void NAxisMotion::readLinearAcceleration(float& x, float& y, float& z)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateLinearAccel();
+	}
+	x = gravAccelData.x;
+	y = gravAccelData.y;
+	z = gravAccelData.z;
+}
+
+float NAxisMotion::readLinearAcceleration(int axis)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateAccel();
+	}
+	if (axis == X_AXIS) {
+			return linearAccelData.x;
+	} else if (axis == Y_AXIS) {
+			return linearAccelData.y;
+	} else if (axis == Z_AXIS) {
+			return linearAccelData.z;
+	}
+}
+
+void NAxisMotion::readLinearAccel(float& x, float& y, float& z)
+{
+	readLinearAcceleration(x, y, z);
+}
+
+float NAxisMotion::readLinearAccel(int axis)
+{
+	return readLinearAcceleration(axis);
+}
+
+//Gyroscope
+void NAxisMotion::readGyro(float& x, float& y, float& z)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateGyro();
+	}
+	x = gyroData.x;
+	y = gyroData.y;
+	z = gyroData.z;
+}
+
+float NAxisMotion::readGyro(int axis)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateGyro();
+	}
+	if (axis == X_AXIS) {
+			return gyroData.x;
+	} else if (axis == Y_AXIS) {
+			return gyroData.y;
+	} else if (axis == Z_AXIS) {
+			return gyroData.z;
+	}
+}
+
+//Magnetometer
+void NAxisMotion::readMagnetometer(float& x, float& y, float& z)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateMag();
+	}
+	x = magData.x;
+	y = magData.y;
+	z = magData.z;
+}
+
+float NAxisMotion::readMagnetometer(int axis)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateMag();
+	}
+	if (axis == X_AXIS) {
+			return magData.x;
+	} else if (axis == Y_AXIS) {
+			return magData.y;
+	} else if (axis == Z_AXIS) {
+			return magData.z;
+	}
+}
+
+void NAxisMotion::readMag(float& x, float& y, float& z)
+{
+	readMagnetometer(x, y, z);
+}
+
+float NAxisMotion::readMag(int axis)
+{
+	return readMagnetometer(axis);
+}
+
+/* Quaternion */
+void NAxisMotion::readQuaternion(float& w, float& x, float& y, float& z)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateQuat();
+	}
+	w = quatData.w;
+	x = quatData.x;
+	y = quatData.y;
+	z = quatData.z;
+}
+
+float NAxisMotion::readQuaternion(int axis)
+{
+	if (dataUpdateMode == AUTO)
+	{
+		updateQuat();
+	}
+	if (axis == X_QUAT) {
+			return quatData.x;
+	} else if (axis == Y_QUAT) {
+			return quatData.y;
+	} else if (axis == Z_QUAT) {
+			return quatData.z;
+	}	else if (axis == W_QUAT) {
+			return quatData.w;
+	}
+}
+
+void NAxisMotion::readQuat(float& w, float& x, float& y, float& z)
+{
+	readQuaternion(w, x, y, z);
+}
+
+float NAxisMotion::readQuat(int axis)
+{
+		return readQuaternion(axis);
 }

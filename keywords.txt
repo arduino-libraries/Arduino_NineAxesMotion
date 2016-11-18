@@ -64,6 +64,20 @@ readAccelRange	KEYWORD2
 readAccelBandwidth	KEYWORD2
 readAccelPowerMode	KEYWORD2
 
+begin	KEYWORD2
+end	KEYWORD2
+readAccelerometer	KEYWORD2
+readAccel	KEYWORD2
+readGravAcceleration	KEYWORD2
+readGravAccel	KEYWORD2
+readLinearAcceleration	KEYWORD2
+readLinearAccel	KEYWORD2
+readGyro	KEYWORD2
+readMagnetometer	KEYWORD2
+readMag	KEYWORD2
+readQuaternion	KEYWORD2
+readQuat	KEYWORD2
+
 #######################################
 # Constants and Variables (LITERAL1)
 #######################################
@@ -114,3 +128,11 @@ SLOW_MOTION	LITERAL1
 I2C	LITERAL1
 MANUAL	LITERAL1
 AUTO	LITERAL1
+
+X_AXIS	LITERAL1
+Y_AXIS	LITERAL1
+Z_AXIS	LITERAL1
+X_QUAT	LITERAL1
+Y_QUAT	LITERAL1
+Z_QUAT	LITERAL1
+W_QUAT	LITERAL1

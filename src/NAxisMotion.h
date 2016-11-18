@@ -63,6 +63,19 @@ extern "C" {
 #include <Wire.h>
 #include "Arduino.h"
 
+typedef enum{
+		X_AXIS = 0,
+		Y_AXIS,
+		Z_AXIS
+} Axis;
+
+typedef enum{
+		X_QUAT = 0,
+		Y_QUAT,
+		Z_QUAT,
+		W_QUAT
+} Quaternion;
+
 //Custom Data structures
 //Structure to hold the calibration status
 struct bno055_calib_stat_t {
@@ -695,7 +708,43 @@ public:
 	*******************************************************************************************/
 	uint8_t readAccelPowerMode(void);
 
+	/* BEGIN / END */
+	void begin(unsigned int address = 0x28);
+	void end(void);
 
+	/* ACCELEROMETER */
+	void readAccelerometer(float& x, float& y, float& z);
+	float readAccelerometer(int axis);
+	void readAccel(float& x, float& y, float& z);
+	float readAccel(int axis);
+
+	/* GRAV. ACCELERATION */
+	void readGravAcceleration(float& x, float& y, float& z);
+	float readGravAcceleration(int axis);
+	void readGravAccel(float& x, float& y, float& z);
+	float readGravAccel(int axis);
+
+	/* LINEAR. ACCELERATION */
+	void readLinearAcceleration(float& x, float& y, float& z);
+	float readLinearAcceleration(int axis);
+	void readLinearAccel(float& x, float& y, float& z);
+	float readLinearAccel(int axis);
+
+	/* GYRO */
+	void readGyro(float& x, float& y, float& z);
+	float readGyro(int axis);
+
+	/* MAGNETOMETER */
+	void readMagnetometer(float& x, float& y, float& z);
+	float readMagnetometer(int axis);
+	void readMag(float& x, float& y, float& z);
+	float readMag(int axis);
+
+	/* QUATERNION */
+	void readQuaternion(float& w, float& x, float& y, float& z);
+	float readQuaternion(int axis);
+	void readQuat(float& w, float& x, float& y, float& z);
+	float readQuat(int quaternion);
 
 };
 
