@@ -1186,7 +1186,7 @@ float NAxisMotion::readMag(int axis)
 }
 
 /* Quaternion */
-void NAxisMotion::readQuaternion(float& w, float& x, float& y, float& z)
+void NAxisMotion::readQuaternion(int16_t& w, int16_t& x, int16_t& y, int16_t& z)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1198,7 +1198,7 @@ void NAxisMotion::readQuaternion(float& w, float& x, float& y, float& z)
 	z = quatData.z;
 }
 
-float NAxisMotion::readQuaternion(int axis)
+int16_t NAxisMotion::readQuaternion(int axis)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1215,12 +1215,12 @@ float NAxisMotion::readQuaternion(int axis)
 	}
 }
 
-void NAxisMotion::readQuat(float& w, float& x, float& y, float& z)
+void NAxisMotion::readQuat(int16_t& w, int16_t& x, int16_t& y, int16_t& z)
 {
 	readQuaternion(w, x, y, z);
 }
 
-float NAxisMotion::readQuat(int axis)
+int16_t NAxisMotion::readQuat(int axis)
 {
 		return readQuaternion(axis);
 }

@@ -741,10 +741,10 @@ public:
 	float readMag(int axis);
 
 	/* QUATERNION */
-	void readQuaternion(float& w, float& x, float& y, float& z);
-	float readQuaternion(int axis);
-	void readQuat(float& w, float& x, float& y, float& z);
-	float readQuat(int quaternion);
+	void readQuaternion(int16_t& w, int16_t& x, int16_t& y, int16_t& z);
+	int16_t readQuaternion(int axis);
+	void readQuat(float& w, int16_t& x, int16_t& y, int16_t& z);
+	int16_t readQuat(int quaternion);
 
 };
 
