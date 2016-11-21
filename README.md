@@ -1,6 +1,6 @@
 9 Axes Motion Library
 -----------
-The NAxisMotion.cpp and NAxisMotion.h files are C++ wrapper codes for the
+The NineAxesMotion.cpp and NineAxesMotion.h files are C++ wrapper codes for the
 BNO055.c and BNO055.h Sensor API. The wrapper code has been designed to
 abstract the Sensor API and also to give an idea on how to use the
 advanced features in the Sensor API. Apart from that it acts a bridge
@@ -9,10 +9,10 @@ between the Sensor API and the Arduino framework. Copy this library into
 
 
 -------------------------------------------------------------------------------
-There are 4 examples with the NAxisMotion library.
+There are 4 examples with the 9 Axes Motion library.
 
  - BareMinimum: This example code is as the name says the minimum code
-	required to use the NAxisMotion sensor shield.
+	required to use the 9 Axes Motion shield.
 
  - Euler: This example code reads out the Euler angles in the NDoF mode to
 	the Serial Monitor. It also reads out the Calibration Status. Each sensor
