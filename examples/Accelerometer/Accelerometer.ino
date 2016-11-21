@@ -100,39 +100,39 @@ void loop() //This code is looped forever
     Serial.print("ms ");
 
     Serial.print("      aX: ");
-    Serial.print(mySensor.readAccelX()); //Accelerometer X-Axis data
+    Serial.print(mySensor.readAccelerometer(X_AXIS)); //Accelerometer X-Axis data
     Serial.print("m/s2 ");
 
     Serial.print(" aY: ");
-    Serial.print(mySensor.readAccelY());  //Accelerometer Y-Axis data
+    Serial.print(mySensor.readAccelerometer(Y_AXIS));  //Accelerometer Y-Axis data
     Serial.print("m/s2 ");
 
     Serial.print(" aZ: ");
-    Serial.print(mySensor.readAccelZ());  //Accelerometer Z-Axis data
+    Serial.print(mySensor.readAccelerometer(Z_AXIS));  //Accelerometer Z-Axis data
     Serial.print("m/s2 ");
 
     Serial.print("      lX: ");
-    Serial.print(mySensor.readLinearAccelX()); //Linear Acceleration X-Axis data
+    Serial.print(mySensor.readLinearAcceleration(X_AXIS)); //Linear Acceleration X-Axis data
     Serial.print("m/s2 ");
 
     Serial.print(" lY: ");
-    Serial.print(mySensor.readLinearAccelY());  //Linear Acceleration Y-Axis data
+    Serial.print(mySensor.readLinearAcceleration(Y_AXIS));  //Linear Acceleration Y-Axis data
     Serial.print("m/s2 ");
 
     Serial.print(" lZ: ");
-    Serial.print(mySensor.readLinearAccelZ());  //Linear Acceleration Z-Axis data
+    Serial.print(mySensor.readLinearAcceleration(Z_AXIS));  //Linear Acceleration Z-Axis data
     Serial.print("m/s2 ");
 
     Serial.print("      gX: ");
-    Serial.print(mySensor.readGravAccelX()); //Gravity Acceleration X-Axis data
+    Serial.print(mySensor.readGravAcceleration(X_AXIS)); //Gravity Acceleration X-Axis data
     Serial.print("m/s2 ");
 
     Serial.print(" gY: ");
-    Serial.print(mySensor.readGravAccelY());  //Gravity Acceleration Y-Axis data
+    Serial.print(mySensor.readGravAcceleration(Y_AXIS));  //Gravity Acceleration Y-Axis data
     Serial.print("m/s2 ");
 
     Serial.print(" gZ: ");
-    Serial.print(mySensor.readGravAccelZ());  //Gravity Acceleration Z-Axis data
+    Serial.print(mySensor.readGravAcceleration(Z_AXIS));  //Gravity Acceleration Z-Axis data
     Serial.print("m/s2 ");
 
     Serial.print("      C: ");
