@@ -1,7 +1,7 @@
 /****************************************************************************
 * Copyright (C) 2011 - 2014 Bosch Sensortec GmbH
 *
-* NAxisMotion.cpp
+* NineAxesMotion.cpp
 * Date: 2015/02/10
 * Revision: 3.0 $
 *
@@ -51,14 +51,14 @@
 * No license is granted by implication or otherwise under any patent or
 * patent rights of the copyright holder.
 */
-#include "NAxisMotion.h"
+#include "NineAxesMotion.h"
 //Function Definitions
 /*******************************************************************************************
 *Description: Constructor of the class with the default initialization
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-NAxisMotion::NAxisMotion()
+NineAxesMotion::NineAxesMotion()
 {
 	//Blank
 }
@@ -68,7 +68,7 @@ NAxisMotion::NAxisMotion()
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::initSensor(unsigned int address)
+void NineAxesMotion::initSensor(unsigned int address)
 {
 	//Initialize the GPIO peripheral
 	pinMode(INT_PIN, INPUT_PULLUP);		//Configure Interrupt pin
@@ -83,7 +83,7 @@ void NAxisMotion::initSensor(unsigned int address)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::resetSensor(unsigned int address)
+void NineAxesMotion::resetSensor(unsigned int address)
 {
 	//Reset sequence
 	digitalWrite(RESET_PIN, LOW);		//Set the Reset pin LOW
@@ -144,7 +144,7 @@ void NAxisMotion::resetSensor(unsigned int address)
 *				OPERATION_MODE_NDOF			0x0C			9 Degrees of Freedom Sensor Fusion
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::setOperationMode(byte operationMode)
+void NineAxesMotion::setOperationMode(byte operationMode)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_set_operation_mode(operationMode);			//Set the Operation Mode
@@ -162,7 +162,7 @@ void NAxisMotion::setOperationMode(byte operationMode)
 *				POWER_MODE_SUSPEND		0x02
 *Return Parameter:
 *******************************************************************************************/
-void NAxisMotion::setPowerMode(byte powerMode)
+void NineAxesMotion::setPowerMode(byte powerMode)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_set_power_mode(powerMode);					//Set the Power Mode
@@ -173,7 +173,7 @@ void NAxisMotion::setPowerMode(byte powerMode)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::updateAccel(void)
+void NineAxesMotion::updateAccel(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_convert_float_accel_xyz_msq(&accelData);	//Read the data from the sensor
@@ -184,7 +184,7 @@ void NAxisMotion::updateAccel(void)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::updateMag(void)
+void NineAxesMotion::updateMag(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_convert_float_mag_xyz_uT(&magData);	//Read the data from the sensor
@@ -195,7 +195,7 @@ void NAxisMotion::updateMag(void)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::updateGyro(void)
+void NineAxesMotion::updateGyro(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_convert_float_gyro_xyz_dps(&gyroData);		//Read the data from the sensor
@@ -206,7 +206,7 @@ void NAxisMotion::updateGyro(void)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::updateQuat(void)
+void NineAxesMotion::updateQuat(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_read_quaternion_wxyz(&quatData);			//Read the data from the sensor
@@ -217,7 +217,7 @@ void NAxisMotion::updateQuat(void)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::updateEuler(void)
+void NineAxesMotion::updateEuler(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_convert_float_euler_hpr_deg(&eulerData);	//Read the data from the sensor
@@ -229,7 +229,7 @@ void NAxisMotion::updateEuler(void)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::updateLinearAccel(void)
+void NineAxesMotion::updateLinearAccel(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_convert_float_linear_accel_xyz_msq(&linearAccelData);	//Read the data from the sensor
@@ -240,7 +240,7 @@ void NAxisMotion::updateLinearAccel(void)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::updateGravAccel(void)
+void NineAxesMotion::updateGravAccel(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_convert_float_gravity_xyz_msq(&gravAccelData);	//Read the data from the sensor
@@ -251,7 +251,7 @@ void NAxisMotion::updateGravAccel(void)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::updateCalibStatus(void)
+void NineAxesMotion::updateCalibStatus(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_get_accel_calib_stat(&calibStatus.accel);
@@ -295,7 +295,7 @@ void NAxisMotion::updateCalibStatus(void)
 *			ACCEL_DEEPSUSPEND		0X05
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::writeAccelConfig(uint8_t range, uint8_t bandwidth, uint8_t powerMode)
+void NineAxesMotion::writeAccelConfig(uint8_t range, uint8_t bandwidth, uint8_t powerMode)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_set_accel_range(range);
@@ -308,7 +308,7 @@ void NAxisMotion::writeAccelConfig(uint8_t range, uint8_t bandwidth, uint8_t pow
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::updateAccelConfig(void)
+void NineAxesMotion::updateAccelConfig(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_get_accel_range(&accelStatus.range);
@@ -340,7 +340,7 @@ void NAxisMotion::updateAccelConfig(void)
 *				DISABLE					0				Disables interrupts from that axis
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::accelInterrupts(bool xStatus, bool yStatus, bool zStatus)
+void NineAxesMotion::accelInterrupts(bool xStatus, bool yStatus, bool zStatus)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_set_accel_any_motion_no_motion_axis_enable(BNO055_ACCEL_ANY_MOTION_NO_MOTION_X_AXIS, xStatus);
@@ -353,7 +353,7 @@ void NAxisMotion::accelInterrupts(bool xStatus, bool yStatus, bool zStatus)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::resetInterrupt(void)
+void NineAxesMotion::resetInterrupt(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_set_intr_rst(ENABLE);
@@ -396,7 +396,7 @@ void NAxisMotion::resetInterrupt(void)
 *					ACCEL_BW_1000HZ, 1LSB = 0.5ms
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::enableAnyMotion(uint8_t threshold, uint8_t duration)
+void NineAxesMotion::enableAnyMotion(uint8_t threshold, uint8_t duration)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_set_accel_any_motion_thres(threshold);
@@ -410,7 +410,7 @@ void NAxisMotion::enableAnyMotion(uint8_t threshold, uint8_t duration)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::disableAnyMotion(void)
+void NineAxesMotion::disableAnyMotion(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_set_intr_accel_any_motion(DISABLE);
@@ -460,7 +460,7 @@ void NAxisMotion::disableAnyMotion(void)
 *				SLOW_MOTION				0				Enables the slow motion interrupt
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::enableSlowNoMotion(uint8_t threshold, uint8_t duration, bool motion)
+void NineAxesMotion::enableSlowNoMotion(uint8_t threshold, uint8_t duration, bool motion)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_set_accel_slow_no_motion_enable(motion);
@@ -475,7 +475,7 @@ void NAxisMotion::enableSlowNoMotion(uint8_t threshold, uint8_t duration, bool m
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::disableSlowNoMotion(void)
+void NineAxesMotion::disableSlowNoMotion(void)
 {
 	BNO055_RETURN_FUNCTION_TYPE comRes = BNO055_ZERO_U8X;		//Holds the communication results
 	comRes = bno055_set_intr_accel_no_motion(DISABLE);
@@ -487,7 +487,7 @@ void NAxisMotion::disableSlowNoMotion(void)
 *Input Parameters: None
 *Return Parameter: None
 *******************************************************************************************/
-void NAxisMotion::setUpdateMode(bool updateMode)
+void NineAxesMotion::setUpdateMode(bool updateMode)
 {
 	dataUpdateMode = updateMode;
 }
@@ -498,7 +498,7 @@ void NAxisMotion::setUpdateMode(bool updateMode)
 *Return Parameter:
 *	float:	X-axis accelerometer data in m/s2
 *******************************************************************************************/
-float NAxisMotion::readAccelX(void)
+float NineAxesMotion::readAccelX(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -513,7 +513,7 @@ float NAxisMotion::readAccelX(void)
 *Return Parameter:
 *	float:	Y-axis accelerometer data in m/s2
 *******************************************************************************************/
-float NAxisMotion::readAccelY(void)
+float NineAxesMotion::readAccelY(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -528,7 +528,7 @@ float NAxisMotion::readAccelY(void)
 *Return Parameter:
 *	float:	Z-axis accelerometer data in m/s2
 *******************************************************************************************/
-float NAxisMotion::readAccelZ(void)
+float NineAxesMotion::readAccelZ(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -543,7 +543,7 @@ float NAxisMotion::readAccelZ(void)
 *Return Parameter:
 *	float:	X-axis gyroscope data in deg/s
 *******************************************************************************************/
-float NAxisMotion::readGyroX(void)
+float NineAxesMotion::readGyroX(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -558,7 +558,7 @@ float NAxisMotion::readGyroX(void)
 *Return Parameter:
 *	float:	Y-axis gyroscope data in deg/s
 *******************************************************************************************/
-float NAxisMotion::readGyroY(void)
+float NineAxesMotion::readGyroY(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -573,7 +573,7 @@ float NAxisMotion::readGyroY(void)
 *Return Parameter:
 *	float:	Z-axis gyroscope data in deg/s
 *******************************************************************************************/
-float NAxisMotion::readGyroZ(void)
+float NineAxesMotion::readGyroZ(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -588,7 +588,7 @@ float NAxisMotion::readGyroZ(void)
 *Return Parameter:
 *	float:	X-axis magnetometer data in �T
 *******************************************************************************************/
-float NAxisMotion::readMagX(void)
+float NineAxesMotion::readMagX(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -603,7 +603,7 @@ float NAxisMotion::readMagX(void)
 *Return Parameter:
 *	float:	Y-axis magnetometer data in �T
 *******************************************************************************************/
-float NAxisMotion::readMagY(void)
+float NineAxesMotion::readMagY(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -618,7 +618,7 @@ float NAxisMotion::readMagY(void)
 *Return Parameter:
 *	float:	Z-axis magnetometer data in �T
 *******************************************************************************************/
-float NAxisMotion::readMagZ(void)
+float NineAxesMotion::readMagZ(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -633,7 +633,7 @@ float NAxisMotion::readMagZ(void)
 *Return Parameter:
 *	int16_t:	W-axis quaternion data multiplied by 1000 (for 3 decimal places accuracy)
 *******************************************************************************************/
-int16_t NAxisMotion::readQuatW(void)
+int16_t NineAxesMotion::readQuatW(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -648,7 +648,7 @@ int16_t NAxisMotion::readQuatW(void)
 *Return Parameter:
 *	int16_t:	X-axis quaternion data multiplied by 1000 (for 3 decimal places accuracy)
 *******************************************************************************************/
-int16_t NAxisMotion::readQuatX(void)
+int16_t NineAxesMotion::readQuatX(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -663,7 +663,7 @@ int16_t NAxisMotion::readQuatX(void)
 *Return Parameter:
 *	int16_t:	Y-axis quaternion data multiplied by 1000 (for 3 decimal places accuracy)
 *******************************************************************************************/
-int16_t NAxisMotion::readQuatY(void)
+int16_t NineAxesMotion::readQuatY(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -678,7 +678,7 @@ int16_t NAxisMotion::readQuatY(void)
 *Return Parameter:
 *	int16_t:	Z-axis quaternion data multiplied by 1000 (for 3 decimal places accuracy)
 *******************************************************************************************/
-int16_t NAxisMotion::readQuatZ(void)
+int16_t NineAxesMotion::readQuatZ(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -693,7 +693,7 @@ int16_t NAxisMotion::readQuatZ(void)
 *Return Parameter:
 *	float:	Heading of the euler data
 *******************************************************************************************/
-float NAxisMotion::readEulerHeading(void)
+float NineAxesMotion::readEulerHeading(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -708,7 +708,7 @@ float NAxisMotion::readEulerHeading(void)
 *Return Parameter:
 *	float:	Roll of the euler data
 *******************************************************************************************/
-float NAxisMotion::readEulerRoll(void)
+float NineAxesMotion::readEulerRoll(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -723,7 +723,7 @@ float NAxisMotion::readEulerRoll(void)
 *Return Parameter:
 *	float:	Pitch of the euler data
 *******************************************************************************************/
-float NAxisMotion::readEulerPitch(void)
+float NineAxesMotion::readEulerPitch(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -739,7 +739,7 @@ float NAxisMotion::readEulerPitch(void)
 *Return Parameter:
 *	float:	X-axis Linear Acceleration data in m/s2
 *******************************************************************************************/
-float NAxisMotion::readLinearAccelX(void)
+float NineAxesMotion::readLinearAccelX(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -755,7 +755,7 @@ float NAxisMotion::readLinearAccelX(void)
 *Return Parameter:
 *	float:	Y-axis Linear Acceleration data in m/s2
 *******************************************************************************************/
-float NAxisMotion::readLinearAccelY(void)
+float NineAxesMotion::readLinearAccelY(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -771,7 +771,7 @@ float NAxisMotion::readLinearAccelY(void)
 *Return Parameter:
 *	float:	Z-axis Linear Acceleration data in m/s2
 *******************************************************************************************/
-float NAxisMotion::readLinearAccelZ(void)
+float NineAxesMotion::readLinearAccelZ(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -787,7 +787,7 @@ float NAxisMotion::readLinearAccelZ(void)
 *Return Parameter:
 *	float:	X-axis Gravity Acceleration data in m/s2
 *******************************************************************************************/
-float NAxisMotion::readGravAccelX(void)
+float NineAxesMotion::readGravAccelX(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -803,7 +803,7 @@ float NAxisMotion::readGravAccelX(void)
 *Return Parameter:
 *	float:	Y-axis Gravity Acceleration data in m/s2
 *******************************************************************************************/
-float NAxisMotion::readGravAccelY(void)
+float NineAxesMotion::readGravAccelY(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -819,7 +819,7 @@ float NAxisMotion::readGravAccelY(void)
 *Return Parameter:
 *	float:	Z-axis Gravity Acceleration data in m/s2
 *******************************************************************************************/
-float NAxisMotion::readGravAccelZ(void)
+float NineAxesMotion::readGravAccelZ(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -834,7 +834,7 @@ float NAxisMotion::readGravAccelZ(void)
 *Return Parameter:
 *	uint8_t:	Accelerometer calibration status, 0-3 (0 - low, 3 - high)
 *******************************************************************************************/
-uint8_t NAxisMotion::readAccelCalibStatus(void)
+uint8_t NineAxesMotion::readAccelCalibStatus(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -849,7 +849,7 @@ uint8_t NAxisMotion::readAccelCalibStatus(void)
 *Return Parameter:
 *	uint8_t:	Gyroscope calibration status, 0-3 (0 - low, 3 - high)
 *******************************************************************************************/
-uint8_t NAxisMotion::readGyroCalibStatus(void)
+uint8_t NineAxesMotion::readGyroCalibStatus(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -864,7 +864,7 @@ uint8_t NAxisMotion::readGyroCalibStatus(void)
 *Return Parameter:
 *	uint8_t:	Magnetometer calibration status, 0-3 (0 - low, 3 - high)
 *******************************************************************************************/
-uint8_t NAxisMotion::readMagCalibStatus(void)
+uint8_t NineAxesMotion::readMagCalibStatus(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -879,7 +879,7 @@ uint8_t NAxisMotion::readMagCalibStatus(void)
 *Return Parameter:
 *	uint8_t:	System calibration status, 0-3 (0 - low, 3 - high)
 *******************************************************************************************/
-uint8_t NAxisMotion::readSystemCalibStatus(void)
+uint8_t NineAxesMotion::readSystemCalibStatus(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -901,7 +901,7 @@ uint8_t NAxisMotion::readSystemCalibStatus(void)
 *			ACCEL_RANGE_8G			0X02
 *			ACCEL_RANGE_16G			0X03
 *******************************************************************************************/
-uint8_t NAxisMotion::readAccelRange(void)
+uint8_t NineAxesMotion::readAccelRange(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -927,7 +927,7 @@ uint8_t NAxisMotion::readAccelRange(void)
 *			ACCEL_BW_500HZ			0X06
 *			ACCEL_BW_1000HZ			0X07
 *******************************************************************************************/
-uint8_t NAxisMotion::readAccelBandwidth(void)
+uint8_t NineAxesMotion::readAccelBandwidth(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -951,7 +951,7 @@ uint8_t NAxisMotion::readAccelBandwidth(void)
 *			ACCEL_LOWPOWER_2		0X04
 *			ACCEL_DEEPSUSPEND		0X05
 *******************************************************************************************/
-uint8_t NAxisMotion::readAccelPowerMode(void)
+uint8_t NineAxesMotion::readAccelPowerMode(void)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1000,18 +1000,18 @@ void _delay(u_32 period)
 }
 
 
-void NAxisMotion::begin(unsigned int address = 0x28)
+void NineAxesMotion::begin(unsigned int address = 0x28)
 {
 	initSensor(address);
 }
 
-void NAxisMotion::end()
+void NineAxesMotion::end()
 {
 
 }
 
 //accelerometer
-void NAxisMotion::readAccelerometer(float& x, float& y, float& z)
+void NineAxesMotion::readAccelerometer(float& x, float& y, float& z)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1022,7 +1022,7 @@ void NAxisMotion::readAccelerometer(float& x, float& y, float& z)
 	z = accelData.z;
 }
 
-float NAxisMotion::readAccelerometer(int axis)
+float NineAxesMotion::readAccelerometer(int axis)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1037,18 +1037,18 @@ float NAxisMotion::readAccelerometer(int axis)
 	}
 }
 
-void NAxisMotion::readAccel(float& x, float& y, float& z)
+void NineAxesMotion::readAccel(float& x, float& y, float& z)
 {
 	readAccelerometer(x, y, z);
 }
 
-float NAxisMotion::readAccel(int axis)
+float NineAxesMotion::readAccel(int axis)
 {
 	return readAccelerometer(axis);
 }
 
 // Grav. Acceleration
-void NAxisMotion::readGravAcceleration(float& x, float& y, float& z)
+void NineAxesMotion::readGravAcceleration(float& x, float& y, float& z)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1059,7 +1059,7 @@ void NAxisMotion::readGravAcceleration(float& x, float& y, float& z)
 	z = gravAccelData.z;
 }
 
-float NAxisMotion::readGravAcceleration(int axis)
+float NineAxesMotion::readGravAcceleration(int axis)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1074,18 +1074,18 @@ float NAxisMotion::readGravAcceleration(int axis)
 	}
 }
 
-void NAxisMotion::readGravAccel(float& x, float& y, float& z)
+void NineAxesMotion::readGravAccel(float& x, float& y, float& z)
 {
 	readGravAcceleration(x, y, z);
 }
 
-float NAxisMotion::readGravAccel(int axis)
+float NineAxesMotion::readGravAccel(int axis)
 {
 	return readGravAcceleration(axis);
 }
 
 //Linear Acceleration
-void NAxisMotion::readLinearAcceleration(float& x, float& y, float& z)
+void NineAxesMotion::readLinearAcceleration(float& x, float& y, float& z)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1096,7 +1096,7 @@ void NAxisMotion::readLinearAcceleration(float& x, float& y, float& z)
 	z = gravAccelData.z;
 }
 
-float NAxisMotion::readLinearAcceleration(int axis)
+float NineAxesMotion::readLinearAcceleration(int axis)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1111,18 +1111,18 @@ float NAxisMotion::readLinearAcceleration(int axis)
 	}
 }
 
-void NAxisMotion::readLinearAccel(float& x, float& y, float& z)
+void NineAxesMotion::readLinearAccel(float& x, float& y, float& z)
 {
 	readLinearAcceleration(x, y, z);
 }
 
-float NAxisMotion::readLinearAccel(int axis)
+float NineAxesMotion::readLinearAccel(int axis)
 {
 	return readLinearAcceleration(axis);
 }
 
 //Gyroscope
-void NAxisMotion::readGyro(float& x, float& y, float& z)
+void NineAxesMotion::readGyro(float& x, float& y, float& z)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1133,7 +1133,7 @@ void NAxisMotion::readGyro(float& x, float& y, float& z)
 	z = gyroData.z;
 }
 
-float NAxisMotion::readGyro(int axis)
+float NineAxesMotion::readGyro(int axis)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1149,7 +1149,7 @@ float NAxisMotion::readGyro(int axis)
 }
 
 //Magnetometer
-void NAxisMotion::readMagnetometer(float& x, float& y, float& z)
+void NineAxesMotion::readMagnetometer(float& x, float& y, float& z)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1160,7 +1160,7 @@ void NAxisMotion::readMagnetometer(float& x, float& y, float& z)
 	z = magData.z;
 }
 
-float NAxisMotion::readMagnetometer(int axis)
+float NineAxesMotion::readMagnetometer(int axis)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1175,18 +1175,18 @@ float NAxisMotion::readMagnetometer(int axis)
 	}
 }
 
-void NAxisMotion::readMag(float& x, float& y, float& z)
+void NineAxesMotion::readMag(float& x, float& y, float& z)
 {
 	readMagnetometer(x, y, z);
 }
 
-float NAxisMotion::readMag(int axis)
+float NineAxesMotion::readMag(int axis)
 {
 	return readMagnetometer(axis);
 }
 
 /* Quaternion */
-void NAxisMotion::readQuaternion(int16_t& w, int16_t& x, int16_t& y, int16_t& z)
+void NineAxesMotion::readQuaternion(int16_t& w, int16_t& x, int16_t& y, int16_t& z)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1198,7 +1198,7 @@ void NAxisMotion::readQuaternion(int16_t& w, int16_t& x, int16_t& y, int16_t& z)
 	z = quatData.z;
 }
 
-int16_t NAxisMotion::readQuaternion(int axis)
+int16_t NineAxesMotion::readQuaternion(int axis)
 {
 	if (dataUpdateMode == AUTO)
 	{
@@ -1215,12 +1215,12 @@ int16_t NAxisMotion::readQuaternion(int axis)
 	}
 }
 
-void NAxisMotion::readQuat(int16_t& w, int16_t& x, int16_t& y, int16_t& z)
+void NineAxesMotion::readQuat(int16_t& w, int16_t& x, int16_t& y, int16_t& z)
 {
 	readQuaternion(w, x, y, z);
 }
 
-int16_t NAxisMotion::readQuat(int axis)
+int16_t NineAxesMotion::readQuat(int axis)
 {
 		return readQuaternion(axis);
 }

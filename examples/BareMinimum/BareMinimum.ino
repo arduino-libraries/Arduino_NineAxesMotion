@@ -44,10 +44,10 @@
 * patent rights of the copyright holder.
 */
 
-#include "NAxisMotion.h"        //Contains the bridge code between the API and the Arduino Environment
+#include "NineAxesMotion.h"        //Contains the bridge code between the API and the Arduino Environment
 #include <Wire.h>
 
-NAxisMotion mySensor;           //Object that for the sensor
+NineAxesMotion mySensor;           //Object that for the sensor
 
 void setup() //This code is executed once
 {

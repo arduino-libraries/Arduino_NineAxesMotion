@@ -122,7 +122,8 @@ struct bno055_accel_stat_t {
 #define POST_INIT_PERIOD	50		//Post initialization delay of 50ms
 #define MANUAL				1		//To manually call the update data functions
 #define AUTO				0		//To automatically call the update data functions
-class NAxisMotion {
+
+class NineAxesMotion {
 private:
 	bool 	dataUpdateMode;								//Variable to store the mode of updating data
 	struct 	bno055_t 			myBNO;					//Structure that stores the device information
@@ -142,7 +143,7 @@ public:
 	*Input Parameters: None
 	*Return Parameter: None
 	*******************************************************************************************/
-	NAxisMotion();
+	NineAxesMotion();
 
 	/*******************************************************************************************
 	*Description: Function with the bare minimum initialization
@@ -743,7 +744,7 @@ public:
 	/* QUATERNION */
 	void readQuaternion(int16_t& w, int16_t& x, int16_t& y, int16_t& z);
 	int16_t readQuaternion(int axis);
-	void readQuat(float& w, int16_t& x, int16_t& y, int16_t& z);
+	void readQuat(int16_t& w, int16_t& x, int16_t& y, int16_t& z);
 	int16_t readQuat(int quaternion);
 
 };

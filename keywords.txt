@@ -6,13 +6,13 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-NAxisMotion	KEYWORD1
+NineAxesMotion	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-NAxisMotion	KEYWORD2
+NineAxesMotion	KEYWORD2
 initSensor	KEYWORD2
 resetSensor	KEYWORD2
 setOperationMode	KEYWORD2

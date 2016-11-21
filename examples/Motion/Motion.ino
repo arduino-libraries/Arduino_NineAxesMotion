@@ -5,7 +5,7 @@
 * Date: 2014/09/09
 * Revision: 2.0 $
 *
-* Usage:        Example code of a game to demonstrate the Any motion 
+* Usage:        Example code of a game to demonstrate the Any motion
 *                  and No motion Interrupt features
 *
 ****************************************************************************
@@ -45,10 +45,10 @@
 * patent rights of the copyright holder.
 */
 
-#include "NAxisMotion.h"        //Contains the bridge code between the API and the Arduino Environment
+#include "NineAxesMotion.h"        //Contains the bridge code between the API and the Arduino Environment
 #include <Wire.h>
 
-NAxisMotion mySensor;   //Object that for the sensor
+NineAxesMotion mySensor;   //Object that for the sensor
 bool intDetected = false;       //Flag to indicate if an interrupt was detected
 int threshold = 5;              //At a Range of 4g, the threshold is set at 39.05mg or 0.3830m/s2. This Range is the default for NDOF Mode
 int duration = 1;               //At a filter Bandwidth of 62.5Hz, the duration is 8ms. This Bandwidth is the default for NDOF Mode
@@ -77,7 +77,7 @@ void setup() //This code is executed once
   Serial.println("Move the Device from one place to another without triggering the Any Motion Interrupt.\n\n");
   delay(1000); //Delay for the player(s) to read
   Serial.println("Move the device around and then place it at one position.\nChange the threshold and duration to increase the difficulty level.");
-  Serial.println("Have fun!\n\n"); 
+  Serial.println("Have fun!\n\n");
 }
 
 void loop() //This code is looped forever
