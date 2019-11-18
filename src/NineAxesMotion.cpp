@@ -73,9 +73,6 @@ NineAxesMotion::NineAxesMotion()
 *******************************************************************************************/
 void NineAxesMotion::initSensor(unsigned int address, int int_pin, int reset_pin)
 {
-	INT_PIN = int_pin;
-	RESET_PIN = reset_pin;
-
 	//Initialize the GPIO peripheral
 	pinMode(int_pin, INPUT_PULLUP);		//Configure Interrupt pin
 	pinMode(reset_pin, OUTPUT);			//Configure Reset pin
