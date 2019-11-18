@@ -58,7 +58,7 @@
 
 
 extern "C" {
-#include "utility/BNO055.h"
+#include <utility/BNO055.h>
 }
 #include <Wire.h>
 #include "Arduino.h"
