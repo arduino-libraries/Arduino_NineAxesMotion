@@ -77,24 +77,26 @@ void NineAxesMotion::initSensor(unsigned int address, int int_pin, int reset_pin
 	RESET_PIN = reset_pin;
 
 	//Initialize the GPIO peripheral
-	pinMode(INT_PIN, INPUT_PULLUP);		//Configure Interrupt pin
-	pinMode(RESET_PIN, OUTPUT);			//Configure Reset pin
+	pinMode(int_pin, INPUT_PULLUP);		//Configure Interrupt pin
+	pinMode(reset_pin, OUTPUT);			//Configure Reset pin
 
 	//Power on the BNO055
-	resetSensor(address);
+	resetSensor(address, reset_pin);
 }
 
 /*******************************************************************************************
 *Description: This function is used to reset the BNO055
-*Input Parameters: None
+*Input Parameters: 
+	unsigned int address: I2C address of the BNO055. Default 0x28
+	int reset_pin: GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
 *Return Parameter: None
 *******************************************************************************************/
-void NineAxesMotion::resetSensor(unsigned int address)
+void NineAxesMotion::resetSensor(unsigned int address, int reset_pin)
 {
 	//Reset sequence
-	digitalWrite(RESET_PIN, LOW);		//Set the Reset pin LOW
+	digitalWrite(reset_pin, LOW);		//Set the Reset pin LOW
 	delay(RESET_PERIOD);				//Hold it for a while
-	digitalWrite(RESET_PIN, HIGH);		//Set the Reset pin HIGH
+	digitalWrite(reset_pin, HIGH);		//Set the Reset pin HIGH
 	delay(INIT_PERIOD);					//Pause for a while to let the sensor initialize completely (Anything >500ms should be fine)
 	//Initialization sequence
 	//Link the function pointers for communication (late-binding)
@@ -985,7 +987,7 @@ signed char BNO055_I2C_bus_read(unsigned char dev_addr,unsigned char reg_addr, u
 }
 
 
-signed char BNO055_I2C_bus_write(unsigned char dev_addr,unsigned char reg_addr, unsigned char *reg_data, unsigned char cnt)
+signed char BNO055_I2C_bus_write(unsigned char dev_addr, unsigned char reg_addr, unsigned char *reg_data, unsigned char cnt)
 {
 	BNO055_RETURN_FUNCTION_TYPE comres = BNO055_ZERO_U8X;
 	I2C.beginTransmission(dev_addr);	//Start of transmission
@@ -1006,7 +1008,7 @@ void _delay(u_32 period)
 }
 
 
-void NineAxesMotion::begin(unsigned int address = 0x28)
+void NineAxesMotion::begin(unsigned int address)
 {
 	initSensor(address);
 }

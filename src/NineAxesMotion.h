@@ -58,7 +58,7 @@
 
 
 extern "C" {
-#include <utility/BNO055.h>
+#include "utility/BNO055.h"
 }
 #include <Wire.h>
 #include "Arduino.h"
@@ -91,18 +91,6 @@ struct bno055_accel_stat_t {
 	uint8_t bandwidth;	//Bandwidth: 7.81Hz - 1000Hz
 	uint8_t powerMode;	//Power mode: Normal - Deep suspend
 };
-
-//GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
-int RESET_PIN = 7; // 7 or 4 are most likely candidate pins
-
-//GPIO to receive the Interrupt from the BNO055 (Interrupt is visible on the INT LED on the Shield)
-#if defined(__AVR_ATmega32U4__) //Arduino Yun and Leonardo have I2C shared with pins 2 and 3
-int INT_PIN	= 7;
-#elif defined(ARDUINO_SAMD)
-int INT_PIN	= 7;				// Older SAMD boards have NMI mapped on pin 2
-#else
-int INT_PIN	= 2;
-#endif
 
 #define ENABLE			1		//For use in function parameters
 #define DISABLE			0		//For use in function parameters
@@ -156,10 +144,12 @@ public:
 
 	/*******************************************************************************************
 	*Description: This function is used to reset the BNO055
-	*Input Parameters: None
+	*Input Parameters: 
+		unsigned int address: I2C address of the BNO055. Default 0x28
+		int reset_pin: GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
 	*Return Parameter: None
 	*******************************************************************************************/
-	void resetSensor(unsigned int address);
+	void resetSensor(unsigned int address, int reset_pin = 7);
 
 	/*******************************************************************************************
 	*Description: This function is used to set the operation mode of the BNO055
@@ -756,4 +746,4 @@ signed char BNO055_I2C_bus_read(unsigned char,unsigned char, unsigned char*, uns
 signed char BNO055_I2C_bus_write(unsigned char ,unsigned char , unsigned char* , unsigned char );
 void _delay(u_32);
 
-#endif __NAXISMOTION_H__
+#endif
