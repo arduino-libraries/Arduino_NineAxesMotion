@@ -65,11 +65,17 @@ NineAxesMotion::NineAxesMotion()
 
 /*******************************************************************************************
 *Description: Function with the bare minimum initialization
-*Input Parameters: None
+*Input Parameters:
+	unsigned int address: I2C address of the BNO055. Default 0x28
+	int int_pin: GPIO to receive the Interrupt from the BNO055 for the Arduino Uno (Interrupt is visible on the INT LED on the Shield)
+	int reset_pin: GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
 *Return Parameter: None
 *******************************************************************************************/
-void NineAxesMotion::initSensor(unsigned int address)
+void NineAxesMotion::initSensor(unsigned int address, int int_pin, int reset_pin)
 {
+	INT_PIN = int_pin;
+	RESET_PIN = reset_pin;
+
 	//Initialize the GPIO peripheral
 	pinMode(INT_PIN, INPUT_PULLUP);		//Configure Interrupt pin
 	pinMode(RESET_PIN, OUTPUT);			//Configure Reset pin

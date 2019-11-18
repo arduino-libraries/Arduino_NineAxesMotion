@@ -92,17 +92,16 @@ struct bno055_accel_stat_t {
 	uint8_t powerMode;	//Power mode: Normal - Deep suspend
 };
 
-//GPIO pins used for controlling the Sensor
-#define RESET_PIN		4		//GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
+//GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
+int RESET_PIN = 7; // 7 or 4 are most likely candidate pins
 
-#if defined(__AVR_ATmega32U4__) //Arduino Yun and Leonardo
-#define INT_PIN			4		//GPIO to receive the Interrupt from the BNO055 for the Arduino Uno(Interrupt is visible on the INT LED on the Shield)
-#elif defined(ARDUINO_ARCH_SAM)   //INT_PIN is the interrupt number not the interrupt pin
-#define INT_PIN			2
-#elif defined(ARDUINO_ARCH_SAMD)
-#define INT_PIN 		7
+//GPIO to receive the Interrupt from the BNO055 (Interrupt is visible on the INT LED on the Shield)
+#if defined(__AVR_ATmega32U4__) //Arduino Yun and Leonardo have I2C shared with pins 2 and 3
+int INT_PIN	= 7;
+#elif defined(ARDUINO_SAMD)
+int INT_PIN	= 7;				// Older SAMD boards have NMI mapped on pin 2
 #else
-#define INT_PIN			0
+int INT_PIN	= 2;
 #endif
 
 #define ENABLE			1		//For use in function parameters
@@ -147,10 +146,13 @@ public:
 
 	/*******************************************************************************************
 	*Description: Function with the bare minimum initialization
-	*Input Parameters: None
+	*Input Parameters:
+		unsigned int address: I2C address of the BNO055. Default 0x28
+		int int_pin: GPIO to receive the Interrupt from the BNO055 for the Arduino Uno (Interrupt is visible on the INT LED on the Shield)
+		int reset_pin: GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
 	*Return Parameter: None
 	*******************************************************************************************/
-	void initSensor(unsigned int address = 0x28);
+	void initSensor(unsigned int address = 0x28, int int_pin = 2, int reset_pin = 7);
 
 	/*******************************************************************************************
 	*Description: This function is used to reset the BNO055
