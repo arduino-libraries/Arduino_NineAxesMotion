@@ -1,3 +1,5 @@
+> **Note:** this library is deprecated and no longer maintained.
+
 9 Axes Motion Library
 -----------
 The NineAxesMotion.cpp and NineAxesMotion.h files are C++ wrapper codes for the
