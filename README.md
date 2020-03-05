@@ -41,3 +41,9 @@ determine offsets. Follow the instructions below to calibrate your sensor.
 
  - Magnetometer: Move the magnetometer in a large 8 like pattern a few times
 	gently.
+
+Setting up pins
+-----------
+
+See the declaration for initSensor in NineAxesMotion.h
+Ensure you have correctly configured the Interrupt and Reset pins. Modern boards default to Interrupt Pin = 2 and Reset Pin = 7, although your board may be jumpered differently. The most probable alternative pins are Interrupt Pin = 4 and Reset Pin = 3. Consult your shield and observe how these tracks are jumpered on your particular setup.

@@ -92,19 +92,6 @@ struct bno055_accel_stat_t {
 	uint8_t powerMode;	//Power mode: Normal - Deep suspend
 };
 
-//GPIO pins used for controlling the Sensor
-#define RESET_PIN		4		//GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
-
-#if defined(__AVR_ATmega32U4__) //Arduino Yun and Leonardo
-#define INT_PIN			4		//GPIO to receive the Interrupt from the BNO055 for the Arduino Uno(Interrupt is visible on the INT LED on the Shield)
-#elif defined(ARDUINO_ARCH_SAM)   //INT_PIN is the interrupt number not the interrupt pin
-#define INT_PIN			2
-#elif defined(ARDUINO_ARCH_SAMD)
-#define INT_PIN 		7
-#else
-#define INT_PIN			0
-#endif
-
 #define ENABLE			1		//For use in function parameters
 #define DISABLE			0		//For use in function parameters
 #define NO_MOTION		1		//Enables the no motion interrupt
@@ -147,17 +134,22 @@ public:
 
 	/*******************************************************************************************
 	*Description: Function with the bare minimum initialization
-	*Input Parameters: None
+	*Input Parameters:
+		unsigned int address: I2C address of the BNO055. Default 0x28
+		int int_pin: GPIO to receive the Interrupt from the BNO055 for the Arduino Uno (Interrupt is visible on the INT LED on the Shield)
+		int reset_pin: GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
 	*Return Parameter: None
 	*******************************************************************************************/
-	void initSensor(unsigned int address = 0x28);
+	void initSensor(unsigned int address = 0x28, int int_pin = 2, int reset_pin = 7);
 
 	/*******************************************************************************************
 	*Description: This function is used to reset the BNO055
-	*Input Parameters: None
+	*Input Parameters: 
+		unsigned int address: I2C address of the BNO055. Default 0x28
+		int reset_pin: GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
 	*Return Parameter: None
 	*******************************************************************************************/
-	void resetSensor(unsigned int address);
+	void resetSensor(unsigned int address, int reset_pin = 7);
 
 	/*******************************************************************************************
 	*Description: This function is used to set the operation mode of the BNO055
@@ -754,4 +746,4 @@ signed char BNO055_I2C_bus_read(unsigned char,unsigned char, unsigned char*, uns
 signed char BNO055_I2C_bus_write(unsigned char ,unsigned char , unsigned char* , unsigned char );
 void _delay(u_32);
 
-#endif __NAXISMOTION_H__
+#endif
