@@ -1091,9 +1091,9 @@ void NineAxesMotion::readLinearAcceleration(float& x, float& y, float& z)
 	{
 		updateLinearAccel();
 	}
-	x = gravAccelData.x;
-	y = gravAccelData.y;
-	z = gravAccelData.z;
+	x = linearAccelData.x;
+	y = linearAccelData.y;
+	z = linearAccelData.z;
 }
 
 float NineAxesMotion::readLinearAcceleration(int axis)
