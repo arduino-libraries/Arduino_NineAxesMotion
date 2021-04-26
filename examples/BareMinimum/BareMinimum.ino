@@ -52,7 +52,7 @@ NineAxesMotion mySensor;           //Object that for the sensor
 void setup() //This code is executed once
 {
   //Peripheral Initialization
-  I2C.begin();                    //Initialize I2C communication to the let the library communicate with the sensor.
+  Wire.begin();                    //Initialize I2C communication to the let the library communicate with the sensor.
   //Sensor Initialization
   mySensor.initSensor();          //The I2C Address can be changed here inside this function in the library
   mySensor.setOperationMode(OPERATION_MODE_NDOF);   //Can be configured to other operation modes as desired

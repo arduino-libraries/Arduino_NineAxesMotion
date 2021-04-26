@@ -54,8 +54,8 @@ const int streamPeriod = 20;          //To stream at 50Hz without using addition
 void setup() //This code is executed once
 {
   //Peripheral Initialization
-  Serial.begin(115200);           //Initialize the Serial Port to view information on the Serial Monitor
-  I2C.begin();                    //Initialize I2C communication to the let the library communicate with the sensor.
+  Serial.begin(9600);           //Initialize the Serial Port to view information on the Serial Monitor
+  Wire.begin();                    //Initialize I2C communication to the let the library communicate with the sensor.
   //Sensor Initialization
   mySensor.initSensor();          //The I2C Address can be changed here inside this function in the library
   mySensor.setOperationMode(OPERATION_MODE_NDOF);   //Can be configured to other operation modes as desired
