@@ -16,7 +16,17 @@
 * Modified by: Arduino.org development Team.
 *
 ****************************************************************************
+*
+* Fixed Wire Class,
+* Changed Motion.ino example to be connected allways with the pin D2 and 
+* fixed the interrupt attach function
+*
+* Date: 04/26/2021
+*
+* Modified by: Pablo Marquínez @ content team arduino.cc (p.marquinez@arduino.cc)
+*
 /***************************************************************************
+* 
 * License:
 *
 * Redistribution and use in source and binary forms, with or without
@@ -56,7 +66,6 @@
 
 
 
-
 extern "C" {
 #include <utility/BNO055.h>
 }
@@ -93,10 +102,10 @@ struct bno055_accel_stat_t {
 };
 
 //GPIO pins used for controlling the Sensor
-#define RESET_PIN		4		//GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
+#define RESET_PIN		7		//GPIO to reset the BNO055 (RESET pin has to be HIGH for the BNO055 to operate)
 
 #if defined(__AVR_ATmega32U4__) //Arduino Yun and Leonardo
-#define INT_PIN			4		//GPIO to receive the Interrupt from the BNO055 for the Arduino Uno(Interrupt is visible on the INT LED on the Shield)
+#define INT_PIN			2		//GPIO to receive the Interrupt from the BNO055 for the Arduino Uno(Interrupt is visible on the INT LED on the Shield)
 #elif defined(ARDUINO_ARCH_SAM)   //INT_PIN is the interrupt number not the interrupt pin
 #define INT_PIN			2
 #elif defined(ARDUINO_ARCH_SAMD)

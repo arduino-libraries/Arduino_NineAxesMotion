@@ -15,8 +15,18 @@
 *
 * Modified by: Arduino.org development Team.
 *
-****************************************************************************
+********************************************************************************************************************************************************
+*
+* Fixed Wire Class,
+* Changed Motion.ino example to be connected allways with the pin D2 and 
+* fixed the interrupt attach function
+*
+* Date: 04/26/2021
+*
+* Modified by: Pablo Marquínez @ content team arduino.cc (p.marquinez@arduino.cc)
+*
 /***************************************************************************
+*
 * License:
 *
 * Redistribution and use in source and binary forms, with or without
