@@ -106,7 +106,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_init(struct bno055_t *bno055)
 	*/
 	u_8 a_SW_ID_u_8[ARRAY_SIZE_TWO] = {
 	BNO055_ZERO_U8X, BNO055_ZERO_U8X};
-	/* stuct parameters are assign to bno055*/
+	/* struct parameters are assign to bno055*/
 	p_bno055 = bno055;
 	/* Write the default page as zero*/
 	com_rslt = p_bno055->BNO055_BUS_WRITE_FUNC

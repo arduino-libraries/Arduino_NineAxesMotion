@@ -1,6 +1,11 @@
 > **Note:** this library is deprecated and no longer maintained.
 
 9 Axes Motion Library
+
+[![Check Arduino status](https://github.com/arduino-libraries/NineAxesMotion/actions/workflows/check-arduino.yml/badge.svg)](https://github.com/arduino-libraries/NineAxesMotion/actions/workflows/check-arduino.yml)
+[![Compile Examples status](https://github.com/arduino-libraries/NineAxesMotion/actions/workflows/compile-examples.yml/badge.svg)](https://github.com/arduino-libraries/NineAxesMotion/actions/workflows/compile-examples.yml)
+[![Spell Check status](https://github.com/arduino-libraries/NineAxesMotion/actions/workflows/spell-check.yml/badge.svg)](https://github.com/arduino-libraries/NineAxesMotion/actions/workflows/spell-check.yml)
+
 -----------
 The NineAxesMotion.cpp and NineAxesMotion.h files are C++ wrapper codes for the
 BNO055.c and BNO055.h Sensor API. The wrapper code has been designed to

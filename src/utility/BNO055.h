@@ -84,7 +84,7 @@
 #ifdef	__KERNEL__
 
 #include <linux/types.h>
-/* singed integer type*/
+/* signed integer type*/
 typedef	int8_t s_8;/**< used for signed 8bit */
 typedef	int16_t s_16;/**< used for signed 16bit */
 typedef	int32_t s_32;/**< used for signed 32bit */
@@ -4103,7 +4103,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_convert_double_temp_celsius(
 double *v_temp_d);
 #endif
 /**************************************************************************/
-/**\name FUNCTIONS FOR READING ACCEL,MAG,GYRO AND SYTEM CALIBRATION STATUS*/
+/**\name FUNCTIONS FOR READING ACCEL,MAG,GYRO AND SYSTEMCALIBRATION STATUS*/
 /*************************************************************************/
 /*!
  *	@brief This API used to read
@@ -4162,7 +4162,7 @@ u_8 *v_gyro_calib_u_8);
 BNO055_RETURN_FUNCTION_TYPE bno055_get_sys_calib_stat(
 u_8 *v_sys_calib_u_8);
 /******************************************************************/
-/**\name FUNCTIONS FOR READING ACCEL,MAG,GYRO AND SYTEM SELF TEST */
+/**\name FUNCTIONS FOR READING ACCEL,MAG,GYRO AND SYSTEMSELF TEST */
 /******************************************************************/
 /*!
  *	@brief This API used to read
