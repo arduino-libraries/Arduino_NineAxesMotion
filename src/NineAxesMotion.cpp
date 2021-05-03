@@ -18,7 +18,7 @@
 ********************************************************************************************************************************************************
 *
 * Fixed Wire Class,
-* Changed Motion.ino example to be connected allways with the pin D2 and 
+* Changed Motion.ino example to be connected always with the pin D2 and 
 * fixed the interrupt attach function
 *
 * Date: 04/26/2021
