@@ -1,6 +1,6 @@
 Copyright (C) 2011 - 2014 Bosch Sensortec GmbH
 
-NAxisMotion Library
+Arduino_NAxisMotion Library
 Date: 2014/09/12
 Usage:Library and example code for the BNO055
 

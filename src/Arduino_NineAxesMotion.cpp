@@ -61,7 +61,7 @@
 * No license is granted by implication or otherwise under any patent or
 * patent rights of the copyright holder.
 */
-#include "NineAxesMotion.h"
+#include "Arduino_NineAxesMotion.h"
 //Function Definitions
 /*******************************************************************************************
 *Description: Constructor of the class with the default initialization
