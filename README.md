@@ -7,7 +7,7 @@
 [![Spell Check status](https://github.com/arduino-libraries/NineAxesMotion/actions/workflows/spell-check.yml/badge.svg)](https://github.com/arduino-libraries/NineAxesMotion/actions/workflows/spell-check.yml)
 
 -----------
-The NineAxesMotion.cpp and NineAxesMotion.h files are C++ wrapper codes for the
+The Arduino_NineAxesMotion.cpp and Arduino_NineAxesMotion.h files are C++ wrapper codes for the
 BNO055.c and BNO055.h Sensor API. The wrapper code has been designed to
 abstract the Sensor API and also to give an idea on how to use the
 advanced features in the Sensor API. Apart from that it acts a bridge

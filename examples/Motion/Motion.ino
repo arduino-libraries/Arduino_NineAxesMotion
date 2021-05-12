@@ -45,7 +45,7 @@
   patent rights of the copyright holder.
 */
 
-#include "NineAxesMotion.h" //Contains the bridge code between the API and the Arduino Environment
+#include "Arduino_NineAxesMotion.h" //Contains the bridge code between the API and the Arduino Environment
 #include <Wire.h>
 
 NineAxesMotion mySensor;  //Object that for the sensor
