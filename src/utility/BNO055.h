@@ -102,7 +102,7 @@ typedef	u_int64_t u_64;/**< used for unsigned 64bit */
 * These definition uses for define the C
 * standard version data types
 ***********************************************************/
-# if !defined(__STDC_VERSION__)
+# if defined(__STDC_VERSION__)
 
 /************************************************
  * compiler is C11 C standard
@@ -152,6 +152,7 @@ typedef	int64_t s_64;/**< used for signed 64bit */
 ************************************************/
 
 #else /*  !defined(__STDC_VERSION__) */
+
 /*!
 * @brief By default it is defined as 32 bit machine configuration
 *	define your data types based on your
@@ -756,7 +757,7 @@ s_16 sic_8;/**< soft iron calibration matrix 8 data */
 /*  BNO055 API error codes */
 #define E_NULL_PTR                  ((s_8)-127)
 #define E_BNO055_OUT_OF_RANGE       ((s_8)-2)
-#define	SUCCESS						((u_8)0)
+#define	SUCCESS_BOSCH						((u_8)0)
 #define	ERROR_BOSCH					((s_8)-1)
 
 /* Selection for bit enable and disable */

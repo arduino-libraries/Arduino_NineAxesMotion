@@ -250,7 +250,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_chip_id(u_8 *v_chip_id_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the chip id*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -294,7 +294,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_sw_rev_id(u_16 *v_sw_id_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value of software
 			revision id*/
@@ -345,7 +345,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_page_id(u_8 *v_page_id_u_8)
 		com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 		(p_bno055->dev_addr,
 		BNO055_PAGE_ID__REG, &v_data_u_8, BNO055_ONE_U8X);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			v_data_u_8 = BNO055_GET_BITSLICE(v_data_u_8,
 			BNO055_PAGE_ID);
 			*v_page_id_u_8 = v_data_u_8;
@@ -386,7 +386,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_write_page_id(u_8 v_page_id_u_8)
 			(p_bno055->dev_addr,
 			BNO055_PAGE_ID__REG, &v_data_u_8r, BNO055_ONE_U8X);
 			/* Check condition for communication success*/
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r = BNO055_SET_BITSLICE(v_data_u_8r,
 				BNO055_PAGE_ID, v_page_id_u_8);
 				/* Write the page id*/
@@ -394,7 +394,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_write_page_id(u_8 v_page_id_u_8)
 				(p_bno055->dev_addr,
 				BNO055_PAGE_ID__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS)
+				if (com_rslt == SUCCESS_BOSCH)
 					p_bno055->page_id = v_page_id_u_8;
 			} else {
 			com_rslt = ERROR;
@@ -431,7 +431,7 @@ u_8 *v_accel_rev_id_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the accel revision id */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -474,7 +474,7 @@ u_8 *v_mag_rev_id_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-			if ((v_stat_s_8 == SUCCESS) ||
+			if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 			(p_bno055->page_id == PAGE_ZERO)) {
 				/* Read the mag revision id */
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -519,7 +519,7 @@ u_8 *v_gyro_rev_id_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the gyro revision id */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -563,7 +563,7 @@ u_8 *v_bl_rev_id_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the boot loader revision id */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -612,7 +612,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_accel_x(s_16 *v_accel_x_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the accel x axis two byte value*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -672,7 +672,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_accel_y(s_16 *v_accel_y_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the accel y axis two byte value*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -732,7 +732,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_accel_z(s_16 *v_accel_z_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the accel z axis two byte value*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -803,7 +803,7 @@ struct bno055_accel_t *accel)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
@@ -886,7 +886,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_mag_x(s_16 *v_mag_x_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/*Read the mag x two bytes of data */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -946,7 +946,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_mag_y(s_16 *v_mag_y_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/*Read the mag y two bytes of data */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1008,7 +1008,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_mag_z(s_16 *v_mag_z_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
@@ -1078,7 +1078,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_mag_xyz(struct bno055_mag_t *mag)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/*Read the six byte value of mag xyz*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1158,7 +1158,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_gyro_x(s_16 *v_gyro_x_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the gyro 16 bit x value*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1215,7 +1215,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_gyro_y(s_16 *v_gyro_y_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of gyro y */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1267,7 +1267,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_gyro_z(s_16 *v_gyro_z_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the gyro z 16 bit value*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1337,7 +1337,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_gyro_xyz(struct bno055_gyro_t *gyro)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the six bytes data of gyro xyz*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1415,7 +1415,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_euler_h(s_16 *v_euler_h_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the eulre heading data*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1470,7 +1470,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_euler_r(s_16 *v_euler_r_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the Euler roll data*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1526,7 +1526,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_euler_p(s_16 *v_euler_p_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the Euler p data*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1596,7 +1596,7 @@ struct bno055_euler_t *euler)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the six byte of Euler hrp data*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -1676,7 +1676,7 @@ s_16 *v_quaternion_w_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of quaternion w data*/
@@ -1733,7 +1733,7 @@ s_16 *v_quaternion_x_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of quaternion x data*/
@@ -1789,7 +1789,7 @@ s_16 *v_quaternion_y_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of quaternion y data*/
@@ -1847,7 +1847,7 @@ s_16 *v_quaternion_z_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of quaternion z data*/
@@ -1923,7 +1923,7 @@ struct bno055_quaternion_t *quaternion)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the eight byte value
 			of quaternion wxyz data*/
@@ -2015,7 +2015,7 @@ s_16 *v_linear_accel_x_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of linear accel x data*/
@@ -2073,7 +2073,7 @@ s_16 *v_linear_accel_y_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of linear accel y data*/
@@ -2130,7 +2130,7 @@ s_16 *v_linear_accel_z_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of linear accel z data*/
@@ -2199,7 +2199,7 @@ struct bno055_linear_accel_t *linear_accel)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the six byte value
 			of linear accel xyz data*/
@@ -2280,7 +2280,7 @@ s_16 *v_gravity_x_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of gravity x data*/
@@ -2338,7 +2338,7 @@ s_16 *v_gravity_y_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of gravity y data*/
@@ -2396,7 +2396,7 @@ s_16 *v_gravity_z_s_16)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the two byte value
 			of gravity z data*/
@@ -2467,7 +2467,7 @@ struct bno055_gravity_t *gravity)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the six byte value
 			of gravity xyz data*/
@@ -2541,7 +2541,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_read_temp_data(s_8 *v_temp_s_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the raw temperature data */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -2583,11 +2583,11 @@ float *v_accel_x_f)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MSQ)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MSQ);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw x data*/
 			com_rslt += bno055_read_accel_x(&v_reg_accel_x_s_16);
 			p_bno055->delay_msec(BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw accel x to m/s2*/
 				v_data_f =
 				(float)(v_reg_accel_x_s_16/ACCEL_DIV_MSQ);
@@ -2629,10 +2629,10 @@ float *v_accel_x_f)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MG)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MG);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw x data*/
 			com_rslt += bno055_read_accel_x(&v_reg_accel_x_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw accel x to m/s2*/
 				v_data_f =
 				(float)(v_reg_accel_x_s_16/ACCEL_DIV_MG);
@@ -2673,10 +2673,10 @@ float *v_accel_y_f)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MSQ)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MSQ);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			com_rslt += bno055_read_accel_y(&v_reg_accel_y_s_16);
 			p_bno055->delay_msec(BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw accel y to m/s2*/
 				v_data_f =
 				(float)(v_reg_accel_y_s_16/ACCEL_DIV_MSQ);
@@ -2716,10 +2716,10 @@ float *v_accel_y_f)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MG)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MG);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw z data*/
 			com_rslt += bno055_read_accel_y(&v_reg_accel_y_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw accel z to mg*/
 				data = (float)(v_reg_accel_y_s_16/ACCEL_DIV_MG);
 				*v_accel_y_f = data;
@@ -2759,11 +2759,11 @@ float *v_accel_z_f)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MSQ)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MSQ);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw z data*/
 			com_rslt += bno055_read_accel_z(&v_reg_accel_z_s_16);
 			p_bno055->delay_msec(BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw accel z to m/s2*/
 				v_data_f =
 				(float)(v_reg_accel_z_s_16/ACCEL_DIV_MSQ);
@@ -2804,10 +2804,10 @@ float *v_accel_z_f)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MG)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MG);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw z data*/
 			com_rslt += bno055_read_accel_z(&v_reg_accel_z_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw accel x to mg*/
 				v_data_f =
 				(float)(v_reg_accel_z_s_16/ACCEL_DIV_MG);
@@ -2852,10 +2852,10 @@ struct bno055_accel_float_t *accel_xyz)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MSQ)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MSQ);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw xyz data*/
 			com_rslt += bno055_read_accel_xyz(&reg_accel_xyz);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the accel raw xyz to meterpersecseq*/
 				accel_xyz->x =
 				(float)(reg_accel_xyz.x/ACCEL_DIV_MSQ);
@@ -2904,10 +2904,10 @@ struct bno055_accel_float_t *accel_xyz)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MG)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MG);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw y data*/
 			com_rslt += bno055_read_accel_xyz(&reg_accel_xyz);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/*Convert the accel raw xyz to millig */
 				accel_xyz->x =
 				(float)(reg_accel_xyz.x/ACCEL_DIV_MG);
@@ -2947,7 +2947,7 @@ float *v_mag_x_f)
 	float v_data_f = BNO055_ZERO_U8X;
 	/* Read raw mag x data */
 	com_rslt = bno055_read_mag_x(&v_reg_mag_x_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw mag x to microTesla*/
 		v_data_f = (float)(v_reg_mag_x_s_16/MAG_DIV_UT);
 		*v_mag_x_f = v_data_f;
@@ -2979,7 +2979,7 @@ float *v_mag_y_f)
 	float v_data_f = BNO055_ZERO_U8X;
 	/* Read raw mag y data */
 	com_rslt = bno055_read_mag_y(&v_reg_mag_y_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw mag y to microTesla*/
 		v_data_f = (float)(v_reg_mag_y_s_16/MAG_DIV_UT);
 		*v_mag_y_f = v_data_f;
@@ -3011,7 +3011,7 @@ float *v_mag_z_f)
 	float v_data_f = BNO055_ZERO_U8X;
 	/* Read raw mag z data */
 	com_rslt = bno055_read_mag_z(&v_reg_mag_z_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw mag z to microTesla*/
 		v_data_f = (float)(v_reg_mag_z_s_16/MAG_DIV_UT);
 		*v_mag_z_f = v_data_f;
@@ -3048,7 +3048,7 @@ struct bno055_mag_float_t *mag_xyz_data)
 	BNO055_ZERO_U8X, BNO055_ZERO_U8X, BNO055_ZERO_U8X};
 	/* Read raw mag x data */
 	com_rslt = bno055_read_mag_xyz(&mag_xyz);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert mag raw xyz to microTesla*/
 		mag_xyz_data->x = (float)(mag_xyz.x/MAG_DIV_UT);
 		mag_xyz_data->y = (float)(mag_xyz.y/MAG_DIV_UT);
@@ -3085,10 +3085,10 @@ float *v_gyro_x_f)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_DPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_DPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw x data */
 			com_rslt += bno055_read_gyro_x(&v_reg_gyro_x_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw gyro x to dps*/
 				v_data_f =
 				(float)(v_reg_gyro_x_s_16/GYRO_DIV_DPS);
@@ -3128,10 +3128,10 @@ float *v_gyro_x_f)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_RPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_RPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw x data */
 			com_rslt += bno055_read_gyro_x(&v_reg_gyro_x_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw gyro x to rps*/
 				v_data_f =
 				(float)(v_reg_gyro_x_s_16/GYRO_DIV_RPS);
@@ -3171,10 +3171,10 @@ float *v_gyro_y_f)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_DPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_DPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw y data */
 			com_rslt += bno055_read_gyro_y(&v_reg_gyro_y_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw gyro x to dps*/
 				v_data_f =
 				(float)(v_reg_gyro_y_s_16/GYRO_DIV_DPS);
@@ -3215,10 +3215,10 @@ float *v_gyro_y_f)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_RPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_RPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw y data */
 			com_rslt += bno055_read_gyro_y(&v_reg_gyro_y_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw gyro x to rps*/
 				v_data_f =
 				(float)(v_reg_gyro_y_s_16/GYRO_DIV_RPS);
@@ -3258,10 +3258,10 @@ float *v_gyro_z_f)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_DPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_DPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw z data */
 			com_rslt += bno055_read_gyro_z(&v_reg_gyro_z_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw gyro x to dps*/
 				v_data_f =
 				(float)(v_reg_gyro_z_s_16/GYRO_DIV_DPS);
@@ -3301,10 +3301,10 @@ float *v_gyro_z_f)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_RPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_RPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw x data */
 			com_rslt += bno055_read_gyro_z(&v_reg_gyro_z_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw gyro x to rps*/
 				v_data_f =
 				(float)(v_reg_gyro_z_s_16/GYRO_DIV_RPS);
@@ -3350,10 +3350,10 @@ struct bno055_gyro_float_t *gyro_xyz_data)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_DPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_DPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw xyz data */
 			com_rslt += bno055_read_gyro_xyz(&gyro_xyz);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert gyro raw xyz to dps*/
 				gyro_xyz_data->x =
 				(float)(gyro_xyz.x/GYRO_DIV_DPS);
@@ -3402,10 +3402,10 @@ struct bno055_gyro_float_t *gyro_xyz_data)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_RPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_RPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw xyz data */
 			com_rslt += bno055_read_gyro_xyz(&gyro_xyz);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert gyro raw xyz to rps*/
 				gyro_xyz_data->x =
 				(float)(gyro_xyz.x/GYRO_DIV_RPS);
@@ -3447,10 +3447,10 @@ float *v_euler_h_f)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_DEG)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_DEG);
-		if (com_rslt ==  SUCCESS) {
+		if (com_rslt ==  SUCCESS_BOSCH) {
 			/* Read Euler raw h data*/
 			com_rslt += bno055_read_euler_h(&v_reg_euler_h_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler h data to degree*/
 				v_data_f =
 				(float)(v_reg_euler_h_s_16/EULER_DIV_DEG);
@@ -3487,10 +3487,10 @@ float *v_euler_h_f)
 		/* Read the current Euler unit and set the
 		unit as radians if the unit is in degree */
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_RAD);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read Euler raw h data*/
 			com_rslt += bno055_read_euler_h(&v_reg_euler_h_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler h data to degree*/
 				v_data_f =
 				(float)(v_reg_euler_h_s_16/EULER_DIV_RAD);
@@ -3526,10 +3526,10 @@ float *v_euler_r_f)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_DEG)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_DEG);
-		if (com_rslt ==  SUCCESS) {
+		if (com_rslt ==  SUCCESS_BOSCH) {
 			/* Read Euler raw r data*/
 			com_rslt += bno055_read_euler_r(&reg_euler_r);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler r data to degree*/
 				v_data_f = (float)(reg_euler_r/EULER_DIV_DEG);
 				*v_euler_r_f = v_data_f;
@@ -3564,10 +3564,10 @@ float *v_euler_r_f)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_RAD)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_RAD);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read Euler raw r data*/
 			com_rslt += bno055_read_euler_r(&reg_v_euler_r_f);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler r data to radians*/
 				v_data_f =
 				(float)(reg_v_euler_r_f/EULER_DIV_RAD);
@@ -3603,10 +3603,10 @@ float *v_euler_p_f)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_DEG)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_DEG);
-		if (com_rslt ==  SUCCESS) {
+		if (com_rslt ==  SUCCESS_BOSCH) {
 			/* Read Euler raw p data*/
 			com_rslt += bno055_read_euler_p(&reg_v_euler_p_f);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler p data to degree*/
 				v_data_f =
 				(float)(reg_v_euler_p_f/EULER_DIV_DEG);
@@ -3643,10 +3643,10 @@ float *v_euler_p_f)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_RAD)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_RAD);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read Euler raw r data*/
 			com_rslt += bno055_read_euler_p(&reg_v_euler_p_f);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler r data to radians*/
 				v_data_f =
 				(float)(reg_v_euler_p_f/EULER_DIV_RAD);
@@ -3691,10 +3691,10 @@ struct bno055_euler_float_t *euler_hpr)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_DEG)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_DEG);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read Euler raw hrp data*/
 			com_rslt += bno055_read_euler_hrp(&reg_euler);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler hrp to degree*/
 				euler_hpr->h =
 				(float)(reg_euler.h/EULER_DIV_DEG);
@@ -3742,10 +3742,10 @@ struct bno055_euler_float_t *euler_hpr)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_RAD)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_RAD);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read Euler raw hrp data*/
 			com_rslt += bno055_read_euler_hrp(&reg_euler);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw hrp to radians */
 				euler_hpr->h =
 				(float)(reg_euler.h/EULER_DIV_RAD);
@@ -3781,7 +3781,7 @@ float *v_linear_accel_x_f)
 	float v_data_f = BNO055_ZERO_U8X;
 	/* Read the raw x of linear accel */
 	com_rslt = bno055_read_linear_accel_x(&v_reg_linear_accel_x_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw linear accel x to m/s2*/
 		v_data_f =
 		(float)(v_reg_linear_accel_x_s_16/LINEAR_ACCEL_DIV_MSQ);
@@ -3809,7 +3809,7 @@ float *v_linear_accel_y_f)
 	float v_data_f = BNO055_ZERO_U8X;
 	/* Read the raw y of linear accel */
 	com_rslt = bno055_read_linear_accel_y(&reg_linear_accel_y);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw linear accel x to m/s2*/
 		v_data_f = (float)
 		(reg_linear_accel_y/LINEAR_ACCEL_DIV_MSQ);
@@ -3838,7 +3838,7 @@ float *v_linear_accel_z_f)
 	float v_data_f = BNO055_ZERO_U8X;
 	/* Read the raw x of linear accel */
 	com_rslt = bno055_read_linear_accel_z(&reg_linear_accel_z);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw linear accel z to m/s2*/
 		v_data_f = (float)
 		(reg_linear_accel_z/LINEAR_ACCEL_DIV_MSQ);
@@ -3877,7 +3877,7 @@ struct bno055_linear_accel_float_t *linear_accel_xyz)
 	BNO055_ZERO_U8X, BNO055_ZERO_U8X, BNO055_ZERO_U8X};
 	/* Read the raw x of linear accel */
 	com_rslt = bno055_read_linear_accel_xyz(&reg_linear_accel);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		linear_accel_xyz->x =
 		(float)(reg_linear_accel.x/LINEAR_ACCEL_DIV_MSQ);
 		linear_accel_xyz->y =
@@ -3909,7 +3909,7 @@ float *v_gravity_x_f)
 	float v_data_f = BNO055_ZERO_U8X;
 	/* Read raw gravity of x*/
 	com_rslt = bno055_read_gravity_x(&v_reg_gravity_x_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw gravity x to m/s2*/
 		v_data_f = (float)(v_reg_gravity_x_s_16/GRAVITY_DIV_MSQ);
 		*v_gravity_x_f = v_data_f;
@@ -3938,7 +3938,7 @@ float *v_gravity_y_f)
 	float v_data_f = BNO055_ZERO_U8X;
 	/* Read raw gravity of y*/
 	com_rslt = bno055_read_gravity_y(&v_reg_gravity_y_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw gravity y to m/s2*/
 		v_data_f = (float)(v_reg_gravity_y_s_16/GRAVITY_DIV_MSQ);
 		*v_gravity_y_f = v_data_f;
@@ -3966,7 +3966,7 @@ float *v_gravity_z_f)
 	float v_data_f = BNO055_ZERO_U8X;
 	/* Read raw gravity of z */
 	com_rslt = bno055_read_gravity_z(&v_reg_gravity_z_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw gravity z to m/s2*/
 		v_data_f = (float)(v_reg_gravity_z_s_16/GRAVITY_DIV_MSQ);
 		*v_gravity_z_f = v_data_f;
@@ -4004,7 +4004,7 @@ struct bno055_gravity_float_t *gravity_xyz)
 	BNO055_ZERO_U8X, BNO055_ZERO_U8X, BNO055_ZERO_U8X};
 	/* Read raw gravity of xyz */
 	com_rslt = bno055_read_gravity_xyz(&reg_gravity_xyz);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert raw gravity xyz to meterpersecseq */
 		gravity_xyz->x =
 		(float)(reg_gravity_xyz.x/GRAVITY_DIV_MSQ);
@@ -4043,10 +4043,10 @@ float *v_temp_f)
 	com_rslt = bno055_get_temp_unit(&v_temp_unit_u_8);
 	if (v_temp_unit_u_8 != TEMP_UNIT_FAHRENHEIT)
 		com_rslt += bno055_set_temp_unit(TEMP_UNIT_FAHRENHEIT);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the raw temperature data */
 			com_rslt += bno055_read_temp_data(&v_reg_temp_s_8);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw temperature data to Fahrenheit*/
 				v_data_f = (float)
 				(v_reg_temp_s_8/TEMP_DIV_FAHRENHEIT);
@@ -4086,10 +4086,10 @@ float *v_temp_f)
 	com_rslt = bno055_get_temp_unit(&v_temp_unit_u_8);
 	if (v_temp_unit_u_8 != TEMP_UNIT_CELSIUS)
 		com_rslt += bno055_set_temp_unit(TEMP_UNIT_CELSIUS);
-		if (com_rslt ==  SUCCESS) {
+		if (com_rslt ==  SUCCESS_BOSCH) {
 			/* Read the raw temperature data */
 			com_rslt += bno055_read_temp_data(&v_reg_temp_s_8);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw temperature data to Fahrenheit*/
 				v_data_f =
 				(float)(v_reg_temp_s_8/TEMP_DIV_CELSIUS);
@@ -4132,10 +4132,10 @@ double *v_accel_x_d)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MSQ)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MSQ);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw y data*/
 			com_rslt += bno055_read_accel_x(&v_reg_accel_x_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw x to m/s2 */
 				v_data_f =
 				(double)(v_reg_accel_x_s_16/ACCEL_DIV_MSQ);
@@ -4177,10 +4177,10 @@ double *v_accel_x_d)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MG)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MG);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw y data*/
 			com_rslt += bno055_read_accel_x(&v_reg_accel_x_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw x to mg */
 				v_data_f =
 				(double)(v_reg_accel_x_s_16/ACCEL_DIV_MG);
@@ -4222,10 +4222,10 @@ double *v_accel_y_d)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MSQ)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MSQ);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw y data*/
 			com_rslt += bno055_read_accel_y(&v_reg_accel_y_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw x to m/s2 */
 				v_data_f =
 				(double)(v_reg_accel_y_s_16/ACCEL_DIV_MSQ);
@@ -4266,10 +4266,10 @@ double *v_accel_y_d)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MG)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MG);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw y data*/
 			com_rslt += bno055_read_accel_y(&v_reg_accel_y_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw y to mg */
 				v_data_d =
 				(double)(v_reg_accel_y_s_16/ACCEL_DIV_MG);
@@ -4308,10 +4308,10 @@ double *v_accel_z_d)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MSQ)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MSQ);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw z data*/
 			com_rslt += bno055_read_accel_z(&v_reg_accel_z_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw z to m/s2 */
 				v_data_d =
 				(double)(v_reg_accel_z_s_16/ACCEL_DIV_MSQ);
@@ -4351,10 +4351,10 @@ double *v_accel_z_d)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MG)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MG);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw z data*/
 			com_rslt += bno055_read_accel_z(&v_reg_accel_z_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw z to mg */
 				v_data_d =
 				(double)(v_reg_accel_z_s_16/ACCEL_DIV_MG);
@@ -4400,10 +4400,10 @@ struct bno055_accel_double_t *accel_xyz)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MSQ)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MSQ);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw xyz data*/
 			com_rslt += bno055_read_accel_xyz(&reg_accel_xyz);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw xyz to m/s2*/
 				accel_xyz->x =
 				(double)(reg_accel_xyz.x/ACCEL_DIV_MSQ);
@@ -4451,10 +4451,10 @@ struct bno055_accel_double_t *accel_xyz)
 	com_rslt = bno055_get_accel_unit(&v_accel_unit_u_8);
 	if (v_accel_unit_u_8 != ACCEL_UNIT_MG)
 		com_rslt += bno055_set_accel_unit(ACCEL_UNIT_MG);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the accel raw xyz data*/
 			com_rslt += bno055_read_accel_xyz(&reg_accel_xyz);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw xyz to mg*/
 				accel_xyz->x =
 				(double)(reg_accel_xyz.x/ACCEL_DIV_MG);
@@ -4495,7 +4495,7 @@ double *v_mag_x_d)
 	double v_data_d = BNO055_ZERO_U8X;
 	/* Read raw mag x data */
 	com_rslt = bno055_read_mag_x(&v_reg_v_mag_x_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert raw mag x to microTesla */
 		v_data_d = (double)(v_reg_v_mag_x_s_16/MAG_DIV_UT);
 		*v_mag_x_d = v_data_d;
@@ -4528,7 +4528,7 @@ double *v_mag_y_d)
 	double v_data_d = BNO055_ZERO_U8X;
 	/* Read raw mag y data */
 	com_rslt = bno055_read_mag_y(&v_reg_mag_y_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert raw mag y to microTesla */
 		v_data_d = (double)(v_reg_mag_y_s_16/MAG_DIV_UT);
 		*v_mag_y_d = v_data_d;
@@ -4561,7 +4561,7 @@ double *v_mag_z_d)
 	double v_data_d = BNO055_ZERO_U8X;
 	/* Read raw mag x */
 	com_rslt = bno055_read_mag_z(&v_reg_mag_z_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert raw mag x to microTesla */
 		v_data_d = (double)(v_reg_mag_z_s_16/MAG_DIV_UT);
 		*v_mag_z_d = v_data_d;
@@ -4598,7 +4598,7 @@ struct bno055_mag_double_t *mag_xyz)
 	BNO055_ZERO_U8X, BNO055_ZERO_U8X, BNO055_ZERO_U8X};
 	/* Read raw mag xyz data */
 	com_rslt = bno055_read_mag_xyz(&reg_mag_xyz);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert raw mag xyz to microTesla*/
 		mag_xyz->x =
 		(double)(reg_mag_xyz.x/MAG_DIV_UT);
@@ -4640,10 +4640,10 @@ double *v_gyro_x_d)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_DPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_DPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw x data */
 			com_rslt += bno055_read_gyro_x(&v_reg_gyro_x_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw gyro x to dps */
 				v_data_d =
 				(double)(v_reg_gyro_x_s_16/GYRO_DIV_DPS);
@@ -4684,10 +4684,10 @@ double *v_gyro_x_d)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_RPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_RPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw x data */
 			com_rslt += bno055_read_gyro_x(&v_reg_gyro_x_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw gyro x to rps */
 				v_data_d =
 				(double)(v_reg_gyro_x_s_16/GYRO_DIV_RPS);
@@ -4728,10 +4728,10 @@ double *v_gyro_y_d)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_DPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_DPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw y data */
 			com_rslt += bno055_read_gyro_y(&v_reg_gyro_y_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw gyro y to dps */
 				v_data_d =
 				(double)(v_reg_gyro_y_s_16/GYRO_DIV_DPS);
@@ -4772,10 +4772,10 @@ double *v_gyro_y_d)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_RPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_RPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw y data */
 			com_rslt += bno055_read_gyro_y(&v_reg_gyro_y_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw gyro y to rps */
 				v_data_d =
 				(double)(v_reg_gyro_y_s_16/GYRO_DIV_RPS);
@@ -4816,10 +4816,10 @@ double *v_gyro_z_d)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_DPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_DPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw z data */
 			com_rslt += bno055_read_gyro_z(&v_reg_gyro_z_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw gyro z to dps */
 				v_data_d =
 				(double)(v_reg_gyro_z_s_16/GYRO_DIV_DPS);
@@ -4860,10 +4860,10 @@ double *v_gyro_z_d)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_RPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_RPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw x data */
 			com_rslt += bno055_read_gyro_z(&v_reg_gyro_z_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw gyro x to rps */
 				v_data_d =
 				(double)(v_reg_gyro_z_s_16/GYRO_DIV_RPS);
@@ -4908,10 +4908,10 @@ struct bno055_gyro_double_t *gyro_xyz)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_DPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_DPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw xyz data */
 			com_rslt += bno055_read_gyro_xyz(&reg_gyro_xyz);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert gyro raw xyz to dps*/
 				gyro_xyz->x =
 				(double)(reg_gyro_xyz.x/GYRO_DIV_DPS);
@@ -4959,10 +4959,10 @@ struct bno055_gyro_double_t *gyro_xyz)
 	com_rslt = bno055_get_gyro_unit(&v_gyro_unit_u_8);
 	if (v_gyro_unit_u_8 != GYRO_UNIT_RPS)
 		com_rslt += bno055_set_gyro_unit(GYRO_UNIT_RPS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read gyro raw x data */
 			com_rslt += bno055_read_gyro_xyz(&reg_gyro_xyz);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert the raw gyro xyz to rps*/
 				gyro_xyz->x =
 				(double)(reg_gyro_xyz.x/GYRO_DIV_RPS);
@@ -5002,10 +5002,10 @@ double *v_euler_h_d)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_DEG)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_DEG);
-		if (com_rslt ==  SUCCESS) {
+		if (com_rslt ==  SUCCESS_BOSCH) {
 			/* Read Euler raw h data*/
 			com_rslt += bno055_read_euler_h(&v_reg_euler_h_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler h to degree */
 				v_data_d =
 				(double)(v_reg_euler_h_s_16/EULER_DIV_DEG);
@@ -5042,10 +5042,10 @@ double *v_euler_h_d)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_RAD)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_RAD);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read Euler raw h data*/
 			com_rslt += bno055_read_euler_h(&v_reg_euler_h_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler h to radians */
 				v_data_d =
 				(double)(v_reg_euler_h_s_16/EULER_DIV_RAD);
@@ -5082,10 +5082,10 @@ double *v_euler_r_d)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_DEG)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_DEG);
-		if (com_rslt ==  SUCCESS) {
+		if (com_rslt ==  SUCCESS_BOSCH) {
 			/* Read Euler raw r data*/
 			com_rslt += bno055_read_euler_r(&v_reg_euler_r_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler r to degree */
 				v_data_d =
 				(double)(v_reg_euler_r_s_16/EULER_DIV_DEG);
@@ -5122,10 +5122,10 @@ double *v_euler_r_d)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_RAD)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_RAD);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read Euler raw r data*/
 			com_rslt += bno055_read_euler_r(&v_reg_euler_r_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler r to radians */
 				v_data_d =
 				(double)(v_reg_euler_r_s_16/EULER_DIV_RAD);
@@ -5162,10 +5162,10 @@ double *v_euler_p_d)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_DEG)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_DEG);
-		if (com_rslt ==  SUCCESS) {
+		if (com_rslt ==  SUCCESS_BOSCH) {
 			/* Read Euler raw p data*/
 			com_rslt += bno055_read_euler_p(&v_reg_euler_p_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler p to degree*/
 				v_data_d =
 				(double)(v_reg_euler_p_s_16/EULER_DIV_DEG);
@@ -5203,10 +5203,10 @@ double *v_euler_p_d)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_RAD)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_RAD);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read Euler raw p data*/
 			com_rslt += bno055_read_euler_p(&v_reg_euler_p_s_16);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw p to radians*/
 				v_data_d =
 				(double)(v_reg_euler_p_s_16/EULER_DIV_RAD);
@@ -5252,10 +5252,10 @@ struct bno055_euler_double_t *euler_hpr)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_DEG)
 		com_rslt += bno055_set_euler_unit(EULER_UNIT_DEG);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Read Euler raw h data*/
 			com_rslt += bno055_read_euler_hrp(&reg_euler);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Convert raw Euler hrp to degree*/
 			euler_hpr->h =
 			(double)(reg_euler.h/EULER_DIV_DEG);
@@ -5304,10 +5304,10 @@ struct bno055_euler_double_t *euler_hpr)
 	com_rslt = bno055_get_euler_unit(&v_euler_unit_u_8);
 	if (v_euler_unit_u_8 != EULER_UNIT_RAD)
 		com_rslt = bno055_set_euler_unit(EULER_UNIT_RAD);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the raw hrp */
 			com_rslt = bno055_read_euler_hrp(&reg_euler);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw Euler hrp to radians*/
 				euler_hpr->h =
 				(double)(reg_euler.h/EULER_DIV_RAD);
@@ -5345,7 +5345,7 @@ double *v_linear_accel_x_d)
 	double v_data_d = BNO055_ZERO_U8X;
 	/* Read the raw x of linear accel */
 	com_rslt = bno055_read_linear_accel_x(&v_reg_linear_accel_x_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw x to m/s2 */
 		v_data_d = (double)
 		(v_reg_linear_accel_x_s_16/LINEAR_ACCEL_DIV_MSQ);
@@ -5377,7 +5377,7 @@ double *v_linear_accel_y_d)
 	double v_data_d = BNO055_ZERO_U8X;
 	/* Read the raw x of linear accel */
 	com_rslt = bno055_read_linear_accel_y(&v_reg_linear_accel_y_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw y to m/s2 */
 		v_data_d = (double)
 		(v_reg_linear_accel_y_s_16/LINEAR_ACCEL_DIV_MSQ);
@@ -5409,7 +5409,7 @@ double *v_linear_accel_z_d)
 	double v_data_d = BNO055_ZERO_U8X;
 	/* Read the raw x of linear accel */
 	com_rslt = bno055_read_linear_accel_z(&v_reg_linear_accel_z_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw z to m/s2 */
 		v_data_d =
 		(double)(v_reg_linear_accel_z_s_16/LINEAR_ACCEL_DIV_MSQ);
@@ -5448,7 +5448,7 @@ struct bno055_linear_accel_double_t *linear_accel_xyz)
 	BNO055_ZERO_U8X, BNO055_ZERO_U8X, BNO055_ZERO_U8X};
 	/* Read the raw xyz of linear accel */
 	com_rslt = bno055_read_linear_accel_xyz(&reg_linear_accel_xyz);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert the raw xyz of linear accel to m/s2 */
 		linear_accel_xyz->x =
 		(double)(reg_linear_accel_xyz.x/LINEAR_ACCEL_DIV_MSQ);
@@ -5481,7 +5481,7 @@ double *v_gravity_x_d)
 	double v_data_d = BNO055_ZERO_U8X;
 	/* Read raw gravity of x*/
 	com_rslt = bno055_read_gravity_x(&v_reg_gravity_x_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert raw gravity of x to m/s2 */
 		v_data_d =
 		(double)(v_reg_gravity_x_s_16/GRAVITY_DIV_MSQ);
@@ -5511,7 +5511,7 @@ double *v_gravity_y_d)
 	double v_data_d = BNO055_ZERO_U8X;
 	/* Read raw gravity of y */
 	com_rslt = bno055_read_gravity_y(&v_reg_gravity_y_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* convert raw gravity of y to m/s2 */
 		v_data_d =
 		(double)(v_reg_gravity_y_s_16/GRAVITY_DIV_MSQ);
@@ -5541,7 +5541,7 @@ double *v_gravity_z_d)
 	double v_data_d = BNO055_ZERO_U8X;
 	/* Read raw gravity of z */
 	com_rslt = bno055_read_gravity_z(&v_reg_gravity_z_s_16);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert raw gravity of z to m/s2 */
 		v_data_d =
 		(double)(v_reg_gravity_z_s_16/GRAVITY_DIV_MSQ);
@@ -5579,7 +5579,7 @@ struct bno055_gravity_double_t *gravity_xyz)
 	BNO055_ZERO_U8X, BNO055_ZERO_U8X, BNO055_ZERO_U8X};
 	/* Read raw gravity of xyz */
 	com_rslt = bno055_read_gravity_xyz(&reg_gravity_xyz);
-	if (com_rslt == SUCCESS) {
+	if (com_rslt == SUCCESS_BOSCH) {
 		/* Convert raw gravity of xyz to m/s2 */
 		gravity_xyz->x =
 		(double)(reg_gravity_xyz.x/GRAVITY_DIV_MSQ);
@@ -5616,10 +5616,10 @@ double *v_temp_d)
 	com_rslt = bno055_get_temp_unit(&v_temp_unit_u_8);
 	if (v_temp_unit_u_8 != TEMP_UNIT_FAHRENHEIT)
 		com_rslt += bno055_set_temp_unit(TEMP_UNIT_FAHRENHEIT);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the raw temperature data */
 			com_rslt += bno055_read_temp_data(&v_reg_temp_s_8);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw temperature data to Fahrenheit*/
 				v_data_d =
 				(double)(v_reg_temp_s_8/TEMP_DIV_FAHRENHEIT);
@@ -5656,10 +5656,10 @@ double *v_temp_d)
 	com_rslt = bno055_get_temp_unit(&v_temp_unit_u_8);
 	if (v_temp_unit_u_8 != TEMP_UNIT_CELSIUS)
 		com_rslt += bno055_set_temp_unit(TEMP_UNIT_CELSIUS);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			/* Read the raw temperature data */
 			com_rslt += bno055_read_temp_data(&v_reg_temp_s_8);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Convert raw temperature data to Fahrenheit*/
 				v_data_d =
 				(double)(v_reg_temp_s_8/TEMP_DIV_CELSIUS);
@@ -5702,7 +5702,7 @@ u_8 *v_mag_calib_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the mag calib v_stat_s_8 */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -5747,7 +5747,7 @@ u_8 *v_accel_calib_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the accel calib v_stat_s_8 */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -5792,7 +5792,7 @@ u_8 *v_gyro_calib_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the gyro calib status */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -5837,7 +5837,7 @@ u_8 *v_sys_calib_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the system calib */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -5885,7 +5885,7 @@ u_8 *v_selftest_accel_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the accel self test */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -5934,7 +5934,7 @@ u_8 *v_selftest_mag_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the mag self test */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -5981,7 +5981,7 @@ u_8 *v_selftest_gyro_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the gyro self test */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6028,7 +6028,7 @@ u_8 *v_selftest_mcu_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the self test of micro controller*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6082,7 +6082,7 @@ u_8 *v_gyro_any_motion_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the gyro anymotion interrupt v_stat_s_8*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6137,7 +6137,7 @@ u_8 *v_gyro_highrate_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the gyro highrate interrupt v_stat_s_8*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6193,7 +6193,7 @@ u_8 *v_accel_high_g_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the accel highg interrupt v_stat_s_8 */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6248,7 +6248,7 @@ u_8 *v_accel_any_motion_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the accel anymotion interrupt v_stat_s_8 */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6305,7 +6305,7 @@ u_8 *v_accel_no_motion_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the v_stat_s_8 of accel
 			nomotion/slowmotion interrupt*/
@@ -6351,7 +6351,7 @@ u_8 *v_stat_main_clk_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the status of main clk */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6395,7 +6395,7 @@ u_8 *v_sys_stat_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the the status of system*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6441,7 +6441,7 @@ u_8 *v_sys_error_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the system error code*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6490,7 +6490,7 @@ u_8 *v_accel_unit_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the accel unit */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6537,17 +6537,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the accel unit */
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_UNIT__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_ACCEL_UNIT, v_accel_unit_u_8);
@@ -6605,7 +6605,7 @@ u_8 *v_gyro_unit_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the gyro unit */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6651,17 +6651,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the gyro unit */
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_UNIT__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_UNIT, v_gyro_unit_u_8);
@@ -6719,7 +6719,7 @@ u_8 *v_euler_unit_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the Euler unit */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6766,17 +6766,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the Euler unit*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_EULER_UNIT__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_EULER_UNIT, v_euler_unit_u_8);
@@ -6834,7 +6834,7 @@ u_8 *v_tilt_unit_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
@@ -6883,16 +6883,16 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_TILT_UNIT__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_TILT_UNIT, v_tilt_unit_u_8);
@@ -6949,7 +6949,7 @@ u_8 *v_temp_unit_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the temperature unit */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -6997,17 +6997,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the temperature unit */
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_TEMP_UNIT__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_TEMP_UNIT,
@@ -7065,7 +7065,7 @@ u_8 *v_data_output_format_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the data output format */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -7113,17 +7113,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the data output format */
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_DATA_OUTPUT_FORMAT__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_DATA_OUTPUT_FORMAT,
@@ -7203,7 +7203,7 @@ u_8 *v_operation_mode_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of operation mode*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -7271,7 +7271,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* If the previous operation mode is config it is
 				directly write the operation mode */
 			if (v_prev_opmode_u_8 == OPERATION_MODE_CONFIG) {
@@ -7279,7 +7279,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 				(p_bno055->dev_addr,
 				BNO055_OPERATION_MODE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_OPERATION_MODE,
@@ -7303,7 +7303,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 				(p_bno055->dev_addr,
 				BNO055_OPERATION_MODE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_OPERATION_MODE,
@@ -7323,7 +7323,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_OPERATION_MODE__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data_u_8r = BNO055_SET_BITSLICE
 						(v_data_u_8r,
 						BNO055_OPERATION_MODE,
@@ -7389,7 +7389,7 @@ u_8 *v_power_mode_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of power mode */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -7444,17 +7444,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of power mode */
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_POWER_MODE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_POWER_MODE, v_power_mode_u_8);
@@ -7512,7 +7512,7 @@ u_8 *v_intr_rst_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of reset interrupt*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -7558,14 +7558,14 @@ BNO055_RETURN_FUNCTION_TYPE bno055_set_intr_rst(u_8 v_intr_rst_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Write the value of reset interrupt */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_INTR_RST__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r =
 				BNO055_SET_BITSLICE(v_data_u_8r,
 				BNO055_INTR_RST, v_intr_rst_u_8);
@@ -7614,7 +7614,7 @@ u_8 *v_clk_src_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of clk source */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -7659,14 +7659,14 @@ BNO055_RETURN_FUNCTION_TYPE bno055_set_clk_src(u_8 v_clk_src_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Write the value of clk source */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_CLK_SRC__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r =
 				BNO055_SET_BITSLICE(v_data_u_8r,
 				BNO055_CLK_SRC, v_clk_src_u_8);
@@ -7716,7 +7716,7 @@ u_8 *v_sys_rst_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of reset system */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -7763,14 +7763,14 @@ BNO055_RETURN_FUNCTION_TYPE bno055_set_sys_rst(u_8 v_sys_rst_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Write the value of reset system */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_SYS_RST__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r =
 				BNO055_SET_BITSLICE(v_data_u_8r,
 				BNO055_SYS_RST, v_sys_rst_u_8);
@@ -7820,7 +7820,7 @@ u_8 *v_selftest_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of self test */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -7869,17 +7869,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of self test */
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_SELFTEST__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_SELFTEST,
@@ -7938,7 +7938,7 @@ u_8 *v_temp_source_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of temperature source */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -7985,17 +7985,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of temperature source*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_TEMP_SOURCE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_TEMP_SOURCE, v_temp_source_u_8);
@@ -8069,7 +8069,7 @@ u_8 *v_remap_axis_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of axis remap*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -8133,12 +8133,12 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
 			/* Write the value of axis remap */
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			switch (v_remap_axis_u_8) {
 			case REMAP_X_Y:
 			case REMAP_Y_Z:
@@ -8151,7 +8151,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 				(p_bno055->dev_addr,
 				BNO055_REMAP_AXIS_VALUE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_REMAP_AXIS_VALUE,
@@ -8170,7 +8170,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 				(p_bno055->dev_addr,
 				BNO055_REMAP_AXIS_VALUE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_REMAP_AXIS_VALUE,
@@ -8230,7 +8230,7 @@ u_8 *v_remap_x_sign_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of x-axis remap sign */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -8277,17 +8277,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of x-axis remap */
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_REMAP_X_SIGN__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_REMAP_X_SIGN,
@@ -8345,7 +8345,7 @@ u_8 *v_remap_y_sign_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of y-axis remap sign*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -8392,17 +8392,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of y-axis remap sign*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_REMAP_Y_SIGN__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_REMAP_Y_SIGN,
@@ -8460,7 +8460,7 @@ u_8 *v_remap_z_sign_u_8)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read the value of z-axis remap sign*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -8507,17 +8507,17 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of z-axis remap sign*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_REMAP_Z_SIGN__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_REMAP_Z_SIGN,
@@ -8613,7 +8613,7 @@ struct bno055_sic_matrix_t  *sic_matrix)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read soft iron calibration matrix value
 			it is eighteen bytes of data */
@@ -8621,7 +8621,7 @@ struct bno055_sic_matrix_t  *sic_matrix)
 			(p_bno055->dev_addr,
 			BNO055_SIC_MATRIX_0_LSB__REG,
 			v_data_u_8, BNO055_EIGHTEEN_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/*soft iron calibration matrix zero*/
 				v_data_u_8[INDEX_ZERO] =
 				BNO055_GET_BITSLICE(v_data_u_8[INDEX_ZERO],
@@ -8779,11 +8779,11 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-				if (v_stat_s_8 == SUCCESS) {
+				if (v_stat_s_8 == SUCCESS_BOSCH) {
 					/* write soft iron calibration
 					matrix zero value*/
 					com_rslt =
@@ -8791,7 +8791,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_0_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_0
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -8811,7 +8811,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_0_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_0  >>
 						BNO055_SHIFT_8_POSITION)
@@ -8834,7 +8834,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_1_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_1
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -8854,7 +8854,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_1_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_1  >>
 						BNO055_SHIFT_8_POSITION)
@@ -8877,7 +8877,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_2_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_2
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -8897,7 +8897,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_2_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_2 >>
 						BNO055_SHIFT_8_POSITION)
@@ -8920,7 +8920,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_3_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_3
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -8940,7 +8940,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_3_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_3 >>
 						BNO055_SHIFT_8_POSITION)
@@ -8963,7 +8963,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_4_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_4
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -8983,7 +8983,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_4_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_4 >>
 						BNO055_SHIFT_8_POSITION)
@@ -9006,7 +9006,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_5_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_5
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9026,7 +9026,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_5_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_5 >>
 						BNO055_SHIFT_8_POSITION)
@@ -9049,7 +9049,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_6_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_6
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9069,7 +9069,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_6_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_6 >>
 						BNO055_SHIFT_8_POSITION)
@@ -9092,7 +9092,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_7_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_7
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9112,7 +9112,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_7_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_7 >>
 						BNO055_SHIFT_8_POSITION)
@@ -9135,7 +9135,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_8_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_8
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9155,7 +9155,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_SIC_MATRIX_8_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(sic_matrix->sic_8 >>
 						BNO055_SHIFT_8_POSITION)
@@ -9243,14 +9243,14 @@ struct bno055_accel_offset_t  *accel_offset)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read accel offset value it is six bytes of data*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_ACCEL_OFFSET_X_LSB__REG,
 			v_data_u_8, BNO055_SIX_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Read accel x offset value*/
 				v_data_u_8[INDEX_ZERO] =
 				BNO055_GET_BITSLICE(v_data_u_8[INDEX_ZERO],
@@ -9297,7 +9297,7 @@ struct bno055_accel_offset_t  *accel_offset)
 				v_data_u_8[INDEX_ZERO] - radius->LSB
 				v_data_u_8[INDEX_ONE] - radius->MSB
 				*/
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8[INDEX_ZERO] =
 					BNO055_GET_BITSLICE(
 						v_data_u_8[INDEX_ZERO],
@@ -9369,18 +9369,18 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-				if (v_stat_s_8 == SUCCESS) {
+				if (v_stat_s_8 == SUCCESS_BOSCH) {
 					/* write accel offset x value*/
 					com_rslt =
 					p_bno055->BNO055_BUS_READ_FUNC
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_OFFSET_X_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(accel_offset->x
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9400,7 +9400,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_OFFSET_X_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(accel_offset->x  >>
 						BNO055_SHIFT_8_POSITION)
@@ -9422,7 +9422,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_OFFSET_Y_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(accel_offset->y
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9442,7 +9442,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_OFFSET_Y_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(accel_offset->y >>
 						BNO055_SHIFT_8_POSITION)
@@ -9463,7 +9463,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_OFFSET_Z_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(accel_offset->z
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9483,7 +9483,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_OFFSET_Z_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(accel_offset->z >>
 						BNO055_SHIFT_8_POSITION)
@@ -9505,7 +9505,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_RADIUS_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(accel_offset->r
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9525,7 +9525,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_RADIUS_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(accel_offset->r >>
 						BNO055_SHIFT_8_POSITION)
@@ -9604,14 +9604,14 @@ struct bno055_mag_offset_t  *mag_offset)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read mag offset value it the six bytes of data */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_MAG_OFFSET_X_LSB__REG,
 			v_data_u_8, BNO055_SIX_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Read mag x offset value*/
 				v_data_u_8[INDEX_ZERO] =
 				BNO055_GET_BITSLICE(v_data_u_8[INDEX_ZERO],
@@ -9654,7 +9654,7 @@ struct bno055_mag_offset_t  *mag_offset)
 				(p_bno055->dev_addr,
 				BNO055_MAG_RADIUS_LSB__REG,
 				v_data_u_8, BNO055_TWO_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					/* Array holding the mag radius values
 					v_data_u_8[INDEX_ZERO] - radius->LSB
 					v_data_u_8[INDEX_ONE] - radius->MSB
@@ -9720,18 +9720,18 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 		v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-				if (v_stat_s_8 == SUCCESS) {
+				if (v_stat_s_8 == SUCCESS_BOSCH) {
 					/* write Mag offset x value*/
 					com_rslt =
 					p_bno055->BNO055_BUS_READ_FUNC
 					(p_bno055->dev_addr,
 					BNO055_MAG_OFFSET_X_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(mag_offset->x
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9751,7 +9751,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_MAG_OFFSET_X_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(mag_offset->x  >>
 						BNO055_SHIFT_8_POSITION)
@@ -9773,7 +9773,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_MAG_OFFSET_Y_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(mag_offset->y &
 						BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9793,7 +9793,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_MAG_OFFSET_Y_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(mag_offset->y >>
 						BNO055_SHIFT_8_POSITION)
@@ -9814,7 +9814,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_MAG_OFFSET_Z_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(mag_offset->z &
 						BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9834,7 +9834,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_MAG_OFFSET_Z_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(mag_offset->z >>
 						BNO055_SHIFT_8_POSITION)
@@ -9856,7 +9856,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_MAG_RADIUS_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(mag_offset->r &
 						BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -9876,7 +9876,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_MAG_RADIUS_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(mag_offset->r >>
 						BNO055_SHIFT_8_POSITION)
@@ -9964,14 +9964,14 @@ struct bno055_gyro_offset_t  *gyro_offset)
 		if (p_bno055->page_id != PAGE_ZERO)
 			/* Write the page zero*/
 			v_stat_s_8 = bno055_write_page_id(PAGE_ZERO);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ZERO)) {
 			/* Read gyro offset value it the six bytes of data*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_GYRO_OFFSET_X_LSB__REG,
 			v_data_u_8, BNO055_SIX_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Read gyro x offset value*/
 				v_data_u_8[INDEX_ZERO] =
 				BNO055_GET_BITSLICE(v_data_u_8[INDEX_ZERO],
@@ -10063,18 +10063,18 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 		mode is in config mode, this part of code is checking the
 		current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 				v_stat_s_8 += bno055_set_operation_mode
 				(OPERATION_MODE_CONFIG);
-				if (v_stat_s_8 == SUCCESS) {
+				if (v_stat_s_8 == SUCCESS_BOSCH) {
 					/* write gryo offset x value*/
 					com_rslt =
 					p_bno055->BNO055_BUS_READ_FUNC
 					(p_bno055->dev_addr,
 					BNO055_GYRO_OFFSET_X_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(gyro_offset->x
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -10094,7 +10094,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_GYRO_OFFSET_X_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(gyro_offset->x  >>
 						BNO055_SHIFT_8_POSITION)
@@ -10116,7 +10116,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_GYRO_OFFSET_Y_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(gyro_offset->y
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -10136,7 +10136,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_GYRO_OFFSET_Y_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(gyro_offset->y >>
 						BNO055_SHIFT_8_POSITION)
@@ -10157,7 +10157,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_GYRO_OFFSET_Z_LSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(gyro_offset->z
 						& BNO055_SIC_HEX_0_0_F_F_DATA));
@@ -10177,7 +10177,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 					(p_bno055->dev_addr,
 					BNO055_GYRO_OFFSET_Z_MSB__REG,
 					&v_data2_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data1_u_8r = ((s_8)
 						(gyro_offset->z >>
 						BNO055_SHIFT_8_POSITION)
@@ -10244,7 +10244,7 @@ u_8 *v_accel_range_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel g range */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -10295,14 +10295,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				if (v_accel_range_u_8 < BNO055_FIVE_U8X) {
 					/* Write the value of accel range*/
 					com_rslt =
@@ -10310,7 +10310,7 @@ if (v_stat_s_8 == SUCCESS) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_RANGE__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data_u_8r = BNO055_SET_BITSLICE
 						(v_data_u_8r,
 						BNO055_ACCEL_RANGE,
@@ -10381,7 +10381,7 @@ u_8 *v_accel_bw_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel bandwidth */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -10436,14 +10436,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				if (v_accel_bw_u_8 < BNO055_EIGHT_U8X) {
 					/* Write the accel */
 					com_rslt =
@@ -10451,7 +10451,7 @@ if (v_stat_s_8 == SUCCESS) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_BW__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data_u_8r = BNO055_SET_BITSLICE
 						(v_data_u_8r, BNO055_ACCEL_BW,
 						v_accel_bw_u_8);
@@ -10518,7 +10518,7 @@ u_8 *v_accel_power_mode_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel bandwidth */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -10570,14 +10570,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8  = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				if (v_accel_power_mode_u_8 < BNO055_SIX_U8X) {
 					/* Write the value of accel bandwidth*/
 					com_rslt =
@@ -10585,7 +10585,7 @@ if (v_stat_s_8 == SUCCESS) {
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_POWER_MODE__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data_u_8r = BNO055_SET_BITSLICE
 						(v_data_u_8r,
 						BNO055_ACCEL_POWER_MODE,
@@ -10656,7 +10656,7 @@ u_8 *v_mag_data_output_rate_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the mag output data rate*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -10711,14 +10711,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		/* Write page as one */
 		v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if (v_pg_stat_s_8 == SUCCESS) {
+		if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_mag_data_output_rate_u_8
 				< BNO055_EIGHT_U8X) {
 				/* Write the value of
@@ -10728,7 +10728,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_MAG_DATA_OUTPUT_RATE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_MAG_DATA_OUTPUT_RATE,
@@ -10795,7 +10795,7 @@ u_8 *v_mag_operation_mode_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of mag operation mode*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -10846,14 +10846,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				if (v_mag_operation_mode_u_8
 					< BNO055_FIVE_U8X) {
 					/* Write the value
@@ -10863,7 +10863,7 @@ if (v_stat_s_8 == SUCCESS) {
 					(p_bno055->dev_addr,
 					BNO055_MAG_OPERATION_MODE__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data_u_8r = BNO055_SET_BITSLICE
 						(v_data_u_8r,
 						BNO055_MAG_OPERATION_MODE,
@@ -10930,7 +10930,7 @@ u_8 *v_mag_power_mode_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of mag power mode */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -10981,14 +10981,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode(
 		OPERATION_MODE_CONFIG);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		/* Write page as one */
 		v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if (v_pg_stat_s_8 == SUCCESS) {
+		if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 			if (v_mag_power_mode_u_8 < BNO055_FOUR_U8X) {
 				/* Write the value of mag power mode*/
 				com_rslt =
@@ -10996,7 +10996,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_MAG_POWER_MODE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_MAG_POWER_MODE,
@@ -11064,7 +11064,7 @@ u_8 *v_gyro_range_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro range */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -11116,14 +11116,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				if (v_gyro_range_u_8 < BNO055_FIVE_U8X) {
 					/* Write the value of gyro range*/
 					com_rslt =
@@ -11131,7 +11131,7 @@ if (v_stat_s_8 == SUCCESS) {
 					(p_bno055->dev_addr,
 					BNO055_GYRO_RANGE__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data_u_8r = BNO055_SET_BITSLICE
 						(v_data_u_8r,
 						BNO055_GYRO_RANGE,
@@ -11202,7 +11202,7 @@ u_8 *v_gyro_bw_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
@@ -11258,14 +11258,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		/* Write page as one */
 		v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-	if (v_pg_stat_s_8 == SUCCESS) {
+	if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 		/* Write the value of gyro bandwidth */
 		if ((v_gyro_bw_u_8 == BNO055_ZERO_U8X ||
 			v_gyro_bw_u_8 > BNO055_ZERO_U8X) &&
@@ -11302,7 +11302,7 @@ if (v_stat_s_8 == SUCCESS) {
 			(p_bno055->dev_addr,
 			BNO055_GYRO_BW__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r = BNO055_SET_BITSLICE
 				(v_data_u_8r,
 				BNO055_GYRO_BW,
@@ -11315,13 +11315,13 @@ if (v_stat_s_8 == SUCCESS) {
 			}
 			com_rslt = bno055_get_gyro_power_mode
 			(&gyro_opmode);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				if (gyro_opmode ==
 				GYRO_POWER_MODE_ADVANCE_POWERSAVE) {
 					com_rslt +=
 					bno055_get_gyro_auto_sleep_durn
 					(&gyro_auto_sleep_durn);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						com_rslt +=
 						bno055_gyro_set_auto_sleep_durn
 						(gyro_auto_sleep_durn,
@@ -11386,7 +11386,7 @@ u_8 *v_gyro_power_mode_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Write the value of gyro power mode*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -11440,14 +11440,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		/* Write page as one */
 		v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if (v_pg_stat_s_8 == SUCCESS) {
+		if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write the value of power mode*/
 			if ((v_gyro_power_mode_u_8 == BNO055_ZERO_U8X ||
 			v_gyro_power_mode_u_8 > BNO055_ZERO_U8X) &&
@@ -11474,7 +11474,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(&v_gyro_bw_u_8);
 				com_rslt += bno055_get_gyro_auto_sleep_durn
 				(&gyro_auto_sleep_durn);
-				if (com_rslt == SUCCESS)
+				if (com_rslt == SUCCESS_BOSCH)
 					bno055_gyro_set_auto_sleep_durn
 					(gyro_auto_sleep_durn,
 					v_gyro_bw_u_8);
@@ -11491,7 +11491,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_GYRO_POWER_MODE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_GYRO_POWER_MODE,
@@ -11556,7 +11556,7 @@ u_8 *v_sleep_tmr_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* read the value of accel sleep mode */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -11605,14 +11605,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write page as one */
 				v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-				if (v_pg_stat_s_8 == SUCCESS) {
+				if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 					if (v_sleep_tmr_u_8 < BNO055_TWO_U8X) {
 						/*Write the value
 						of accel sleep mode*/
@@ -11621,7 +11621,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 						(p_bno055->dev_addr,
 						BNO055_ACCEL_SLEEP_MODE__REG,
 						&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data_u_8r = BNO055_SET_BITSLICE
 						(v_data_u_8r,
 						BNO055_ACCEL_SLEEP_MODE,
@@ -11695,7 +11695,7 @@ u_8 *v_sleep_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel sleep duration */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -11753,14 +11753,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write page as one */
 				v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-				if (v_pg_stat_s_8 == SUCCESS) {
+				if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 					if (v_sleep_durn_u_8 <
 					BNO055_SIXTEEN_U8X) {
 						/* Write the accel
@@ -11770,7 +11770,7 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 						(p_bno055->dev_addr,
 						BNO055_ACCEL_SLEEP_DURN__REG,
 						&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data_u_8r = BNO055_SET_BITSLICE
 						(v_data_u_8r,
 						BNO055_ACCEL_SLEEP_DURN,
@@ -11829,7 +11829,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_get_gyro_sleep_durn(u_8 *v_sleep_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the gyro sleep duration */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -11872,21 +11872,21 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				if (v_sleep_durn_u_8 < BNO055_EIGHT_U8X) {
 					com_rslt =
 					p_bno055->BNO055_BUS_READ_FUNC
 					(p_bno055->dev_addr,
 					BNO055_GYRO_SLEEP_DURN__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						/* Write the gyro
 						sleep duration */
 						v_data_u_8r = BNO055_SET_BITSLICE
@@ -11948,7 +11948,7 @@ u_8 *v_auto_sleep_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro auto sleep duration */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -11994,14 +11994,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		/* Write page as one */
 		v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if (v_pg_stat_s_8 == SUCCESS) {
+		if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write the value of gyro sleep duration */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
@@ -12091,7 +12091,7 @@ if (v_stat_s_8 == SUCCESS) {
 					BNO055_GYRO_4MS_AUTOSLPDUR;
 				break;
 				}
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_GYRO_AUTO_SLEEP_DURN,
@@ -12151,7 +12151,7 @@ u_8 *v_sleep_mode_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of mag sleep mode*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -12195,20 +12195,20 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write page as one */
 				v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-				if (v_pg_stat_s_8 == SUCCESS) {
+				if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 					com_rslt =
 					p_bno055->BNO055_BUS_READ_FUNC
 					(p_bno055->dev_addr,
 					BNO055_MAG_SLEEP_MODE__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						/* Write the value
 						of mag sleep mode*/
 						v_data_u_8r =
@@ -12267,7 +12267,7 @@ u_8 *v_sleep_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of mag sleep duration*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -12311,20 +12311,20 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write page as one */
 				v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-				if (v_pg_stat_s_8 == SUCCESS) {
+				if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 					com_rslt =
 					p_bno055->BNO055_BUS_READ_FUNC
 					(p_bno055->dev_addr,
 					BNO055_MAG_SLEEP_DURN__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						/* Write the value of
 						mag sleep duration */
 						v_data_u_8r =
@@ -12407,7 +12407,7 @@ u_8 *v_gyro_any_motion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro anymotion interrupt mask*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -12474,14 +12474,14 @@ u_8 v_gyro_any_motion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Write the value of gyro anymotion interrupt mask*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_GYRO_ANY_MOTION_INTR_MASK__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r =
 				BNO055_SET_BITSLICE(v_data_u_8r,
 				BNO055_GYRO_ANY_MOTION_INTR_MASK,
@@ -12566,7 +12566,7 @@ u_8 *v_gyro_highrate_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate interrupt mask*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -12648,13 +12648,13 @@ u_8 v_gyro_highrate_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_GYRO_HIGHRATE_INTR_MASK__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Write the value of gyro
 				highrate interrupt mask*/
 				v_data_u_8r =
@@ -12721,7 +12721,7 @@ u_8 *v_accel_high_g_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel highg interrupt mask*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -12783,13 +12783,13 @@ u_8 v_accel_high_g_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_ACCEL_HIGH_G_INTR_MASK__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Write the value of accel
 				highg interrupt mask*/
 				v_data_u_8r =
@@ -12856,7 +12856,7 @@ u_8 *v_accel_any_motion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* The value of accel anymotion interrupt mask*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -12917,14 +12917,14 @@ u_8 v_accel_any_motion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Write the value of accel anymotion interrupt mask*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_ACCEL_ANY_MOTION_INTR_MASK__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r =
 				BNO055_SET_BITSLICE(v_data_u_8r,
 				BNO055_ACCEL_ANY_MOTION_INTR_MASK,
@@ -12987,7 +12987,7 @@ u_8 *v_accel_nomotion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel nomotion interrupt mask*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -13053,13 +13053,13 @@ u_8 v_accel_nomotion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_ACCEL_NO_MOTION_INTR_MASK__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Write the value of accel
 				nomotion interrupt mask*/
 				v_data_u_8r =
@@ -13130,7 +13130,7 @@ u_8 *v_gyro_any_motion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro anymotion interrupt */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -13196,14 +13196,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	if (p_bno055->page_id != PAGE_ONE)
 		/* Write page as one */
 		v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-	if ((v_stat_s_8 == SUCCESS) ||
+	if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 	(p_bno055->page_id == PAGE_ONE)) {
 		/* Write the value of gyro anymotion interrupt */
 		com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 		(p_bno055->dev_addr,
 		BNO055_GYRO_ANY_MOTION_INTR__REG,
 		&v_data_u_8r, BNO055_ONE_U8X);
-		if (com_rslt == SUCCESS) {
+		if (com_rslt == SUCCESS_BOSCH) {
 			v_data_u_8r =
 			BNO055_SET_BITSLICE(v_data_u_8r,
 			BNO055_GYRO_ANY_MOTION_INTR,
@@ -13288,7 +13288,7 @@ u_8 *v_gyro_highrate_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate interrupt */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -13370,13 +13370,13 @@ u_8 v_gyro_highrate_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_GYRO_HIGHRATE_INTR__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Write the value of gyro highrate interrupt */
 				v_data_u_8r =
 				BNO055_SET_BITSLICE(v_data_u_8r,
@@ -13441,7 +13441,7 @@ u_8 *v_accel_high_g_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel highg interrupt*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -13503,13 +13503,13 @@ u_8 v_accel_high_g_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_ACCEL_HIGH_G_INTR__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Write the value of accel highg interrupt*/
 				v_data_u_8r =
 				BNO055_SET_BITSLICE(v_data_u_8r,
@@ -13574,7 +13574,7 @@ u_8 *v_accel_any_motion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel anymotion interrupt */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -13635,14 +13635,14 @@ u_8 v_accel_any_motion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Write the value of accel anymotion interrupt */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_ACCEL_ANY_MOTION_INTR__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r =
 				BNO055_SET_BITSLICE(v_data_u_8r,
 				BNO055_ACCEL_ANY_MOTION_INTR,
@@ -13710,7 +13710,7 @@ u_8 *v_accel_nomotion_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel nomotion interrupt*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -13776,13 +13776,13 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	if (p_bno055->page_id != PAGE_ONE)
 		/* Write page as one */
 		v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 			(p_bno055->dev_addr,
 			BNO055_ACCEL_NO_MOTION_INTR__REG,
 			&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				/* Write the value of
 				accel nomotion interrupt */
 				v_data_u_8r = BNO055_SET_BITSLICE(v_data_u_8r,
@@ -13841,7 +13841,7 @@ u_8 *v_accel_any_motion_thres_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel any motion threshold */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -13898,19 +13898,19 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_ANY_MOTION_THRES__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					/* Write the value of
 					accel any motion threshold*/
 					v_data_u_8r =
@@ -13973,7 +13973,7 @@ u_8 *v_accel_any_motion_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel anymotion duration */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -14022,19 +14022,19 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_ANY_MOTION_DURN_SET__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					/* Write the value of
 					accel anymotion duration*/
 					v_data_u_8r =
@@ -14103,7 +14103,7 @@ u_8 v_channel_u_8, u_8 *v_data_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			switch (v_channel_u_8) {
 			case BNO055_ACCEL_ANY_MOTION_NO_MOTION_X_AXIS:
@@ -14184,14 +14184,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				switch (v_channel_u_8) {
 				case BNO055_ACCEL_ANY_MOTION_NO_MOTION_X_AXIS:
 				/* Write the value of
@@ -14200,7 +14200,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_ANY_MOTION_X_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_ACCEL_ANY_MOTION_X_AXIS,
@@ -14219,7 +14219,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_ANY_MOTION_Y_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_ACCEL_ANY_MOTION_Y_AXIS,
@@ -14238,7 +14238,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_ANY_MOTION_Z_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_ACCEL_ANY_MOTION_Z_AXIS,
@@ -14310,7 +14310,7 @@ u_8 v_channel_u_8, u_8 *v_data_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			switch (v_channel_u_8) {
 			case BNO055_ACCEL_HIGH_G_X_AXIS:
@@ -14391,14 +14391,14 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				switch (v_channel_u_8) {
 				case BNO055_ACCEL_HIGH_G_X_AXIS:
 				/* Write the value of
@@ -14407,7 +14407,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_HIGH_G_X_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_ACCEL_HIGH_G_X_AXIS, v_data_u_8);
@@ -14425,7 +14425,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_HIGH_G_Y_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_ACCEL_HIGH_G_Y_AXIS,
@@ -14444,7 +14444,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_HIGH_G_Z_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_ACCEL_HIGH_G_Z_AXIS, v_data_u_8);
@@ -14509,7 +14509,7 @@ u_8 *v_accel_high_g_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel highg duration*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -14557,21 +14557,21 @@ if (p_bno055 == BNO055_ZERO_U8X) {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
 
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write page as one */
 				v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-				if (v_pg_stat_s_8 == SUCCESS) {
+				if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 					com_rslt =
 					p_bno055->BNO055_BUS_READ_FUNC
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_HIGH_G_DURN__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						/* Write the value of
 						accel highg duration*/
 						v_data_u_8r =
@@ -14639,7 +14639,7 @@ u_8 *v_accel_high_g_thres_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of highg threshold */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -14692,20 +14692,20 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write page as one */
 				v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-				if (v_pg_stat_s_8 == SUCCESS) {
+				if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 					com_rslt =
 					p_bno055->BNO055_BUS_READ_FUNC
 					(p_bno055->dev_addr,
 					BNO055_ACCEL_HIGH_G_THRES__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						/* Write the value of
 						accel highg threshold */
 						v_data_u_8r =
@@ -14773,7 +14773,7 @@ u_8 *v_accel_slow_no_motion_thres_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of slownomotion threshold */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -14826,21 +14826,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of
 				slownomotion threshold */
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_SLOW_NO_MOTION_THRES__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_ACCEL_SLOW_NO_MOTION_THRES,
@@ -14900,7 +14900,7 @@ u_8 *v_accel_slow_no_motion_en_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of accel slownomotion enable */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -14947,19 +14947,19 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_SLOW_NO_MOTION_ENABLE__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					/* Read the value of
 					accel slownomotion enable */
 					v_data_u_8r =
@@ -15018,7 +15018,7 @@ u_8 *v_accel_slow_no_motion_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/*read value of accel slownomotion duration*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -15062,19 +15062,19 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_ACCEL_SLOW_NO_MOTION_DURN__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					/*Write the value of accel
 					slownomotion duration*/
 					v_data_u_8r =
@@ -15144,7 +15144,7 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 	if (p_bno055->page_id != PAGE_ONE)
 		/* Write page as one */
 		v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-	if ((v_stat_s_8 == SUCCESS) ||
+	if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 	(p_bno055->page_id == PAGE_ONE)) {
 		switch (v_channel_u_8) {
 		case BNO055_GYRO_ANY_MOTION_X_AXIS:
@@ -15225,14 +15225,14 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		/* Write page as one */
 		v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if (v_pg_stat_s_8 == SUCCESS) {
+		if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 			switch (v_channel_u_8) {
 			case BNO055_GYRO_ANY_MOTION_X_AXIS:
 				/* Write the gyro
@@ -15242,7 +15242,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_GYRO_ANY_MOTION_X_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r = BNO055_SET_BITSLICE
 				(v_data_u_8r,
 				BNO055_GYRO_ANY_MOTION_X_AXIS,
@@ -15262,7 +15262,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_GYRO_ANY_MOTION_Y_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r = BNO055_SET_BITSLICE
 				(v_data_u_8r,
 				BNO055_GYRO_ANY_MOTION_Y_AXIS, v_data_u_8);
@@ -15281,7 +15281,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_GYRO_ANY_MOTION_Z_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-			if (com_rslt == SUCCESS) {
+			if (com_rslt == SUCCESS_BOSCH) {
 				v_data_u_8r = BNO055_SET_BITSLICE
 				(v_data_u_8r,
 				BNO055_GYRO_ANY_MOTION_Z_AXIS,
@@ -15354,7 +15354,7 @@ u_8 v_channel_u_8, u_8 *v_data_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			switch (v_channel_u_8) {
 			case BNO055_GYRO_HIGHRATE_X_AXIS:
@@ -15435,14 +15435,14 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				switch (v_channel_u_8) {
 				case BNO055_GYRO_HIGHRATE_X_AXIS:
 				/* Write the value of
@@ -15451,7 +15451,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_X_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_X_AXIS, v_data_u_8);
@@ -15469,7 +15469,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_Y_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(
 					v_data_u_8r,
@@ -15489,7 +15489,7 @@ if (v_stat_s_8 == SUCCESS) {
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_Z_AXIS__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r = BNO055_SET_BITSLICE
 					(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_Z_AXIS, v_data_u_8);
@@ -15553,7 +15553,7 @@ u_8 *v_gyro_any_motion_filter_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro anymotion filter*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -15600,21 +15600,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of
 				gyro anymotion filter*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_ANY_MOTION_FILTER__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_ANY_MOTION_FILTER,
@@ -15674,7 +15674,7 @@ u_8 *v_gyro_highrate_filter_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate filter */
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -15721,14 +15721,14 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of
 				gyro highrate filter*/
 				com_rslt =
@@ -15737,7 +15737,7 @@ if (v_stat_s_8 == SUCCESS) {
 				BNO055_GYRO_HIGHRATE_FILTER__REG,
 				&v_data_u_8r,
 				BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_FILTER,
@@ -15803,7 +15803,7 @@ u_8 *v_gyro_highrate_x_thres_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate threshold*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -15856,21 +15856,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of
 				gyro highrate x threshold*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_X_THRES__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_X_THRES,
@@ -15938,7 +15938,7 @@ u_8 *v_gyro_highrate_x_hyst_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate x hysteresis*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -15993,21 +15993,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/*Write the value of
 				gyro highrate x hysteresis*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_X_HYST__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_X_HYST,
@@ -16067,7 +16067,7 @@ u_8 *v_gyro_highrate_x_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate x duration*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -16113,21 +16113,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value
 				of gyro highrate x duration*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_X_DURN__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_X_DURN,
@@ -16193,7 +16193,7 @@ u_8 *v_gyro_highrate_y_thres_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate y threshold*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -16246,21 +16246,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value
 				of gyro highrate y threshold*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_Y_THRES__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_Y_THRES,
@@ -16327,7 +16327,7 @@ u_8 *v_gyro_highrate_y_hyst_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate y hysteresis*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -16381,21 +16381,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of
 				gyro highrate y hysteresis*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_Y_HYST__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_Y_HYST,
@@ -16454,7 +16454,7 @@ u_8 *v_gyro_highrate_y_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate y duration*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -16500,22 +16500,22 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
 
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value
 				of gyro highrate y duration*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_Y_DURN__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_Y_DURN,
@@ -16581,7 +16581,7 @@ u_8 *v_gyro_highrate_z_thres_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate z threshold*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -16634,21 +16634,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value
 				of gyro highrate z threshold*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_Z_THRES__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_Z_THRES,
@@ -16715,7 +16715,7 @@ u_8 *v_gyro_highrate_z_hyst_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate z hysteresis*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -16769,21 +16769,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value
 				of gyro highrate z hysteresis*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_Z_HYST__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_Z_HYST,
@@ -16842,7 +16842,7 @@ u_8 *v_gyro_highrate_z_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro highrate z duration*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -16888,21 +16888,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of
 				gyro highrate z duration*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_HIGHRATE_Z_DURN__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_HIGHRATE_Z_DURN,
@@ -16967,7 +16967,7 @@ u_8 *v_gyro_any_motion_thres_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro anymotion threshold*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -17019,21 +17019,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value
 				of gyro anymotion threshold*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_ANY_MOTION_THRES__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_ANY_MOTION_THRES,
@@ -17096,7 +17096,7 @@ u_8 *v_gyro_any_motion_slope_samples_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/*Read the value of gyro anymotion slope samples*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -17146,21 +17146,21 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 mode is in config mode, this part of code is checking the
 current operation mode and set the config mode */
 v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-if (v_stat_s_8 == SUCCESS) {
+if (v_stat_s_8 == SUCCESS_BOSCH) {
 	if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 		v_stat_s_8 += bno055_set_operation_mode
 		(OPERATION_MODE_CONFIG);
-		if (v_stat_s_8 == SUCCESS) {
+		if (v_stat_s_8 == SUCCESS_BOSCH) {
 			/* Write page as one */
 			v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-			if (v_pg_stat_s_8 == SUCCESS) {
+			if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write the value of
 				gyro anymotion slope samples*/
 				com_rslt = p_bno055->BNO055_BUS_READ_FUNC
 				(p_bno055->dev_addr,
 				BNO055_GYRO_SLOPE_SAMPLES__REG,
 				&v_data_u_8r, BNO055_ONE_U8X);
-				if (com_rslt == SUCCESS) {
+				if (com_rslt == SUCCESS_BOSCH) {
 					v_data_u_8r =
 					BNO055_SET_BITSLICE(v_data_u_8r,
 					BNO055_GYRO_SLOPE_SAMPLES,
@@ -17216,7 +17216,7 @@ u_8 *v_gyro_awake_durn_u_8)
 		if (p_bno055->page_id != PAGE_ONE)
 			/* Write page as one */
 			v_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-		if ((v_stat_s_8 == SUCCESS) ||
+		if ((v_stat_s_8 == SUCCESS_BOSCH) ||
 		(p_bno055->page_id == PAGE_ONE)) {
 			/* Read the value of gyro anymotion awake duration*/
 			com_rslt = p_bno055->BNO055_BUS_READ_FUNC
@@ -17258,14 +17258,14 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 	mode is in config mode, this part of code is checking the
 	current operation mode and set the config mode */
 	v_stat_s_8 = bno055_get_operation_mode(&v_prev_opmode_u_8);
-	if (v_stat_s_8 == SUCCESS) {
+	if (v_stat_s_8 == SUCCESS_BOSCH) {
 		if (v_prev_opmode_u_8 != OPERATION_MODE_CONFIG)
 			v_stat_s_8 += bno055_set_operation_mode
 			(OPERATION_MODE_CONFIG);
-			if (v_stat_s_8 == SUCCESS) {
+			if (v_stat_s_8 == SUCCESS_BOSCH) {
 				/* Write page as one */
 				v_pg_stat_s_8 = bno055_write_page_id(PAGE_ONE);
-				if (v_pg_stat_s_8 == SUCCESS) {
+				if (v_pg_stat_s_8 == SUCCESS_BOSCH) {
 					/* Write the value of gyro
 					anymotion awake duration*/
 					com_rslt =
@@ -17273,7 +17273,7 @@ if (p_bno055 == BNO055_ZERO_U8X)  {
 					(p_bno055->dev_addr,
 					BNO055_GYRO_AWAKE_DURN__REG,
 					&v_data_u_8r, BNO055_ONE_U8X);
-					if (com_rslt == SUCCESS) {
+					if (com_rslt == SUCCESS_BOSCH) {
 						v_data_u_8r =
 						BNO055_SET_BITSLICE(v_data_u_8r,
 						BNO055_GYRO_AWAKE_DURN,
